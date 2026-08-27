@@ -42,6 +42,13 @@ infrastructure errors, and the Czech language-quality annotation covers all 820
 Czech tasks. Results are in [§9](#9-results); the deliberate exclusions — telecom
 and τ³ `banking_knowledge` — are in §1 and §10.
 
+**Published at <https://lokalniai.github.io/cztaubench-experiments/>** — the
+leaderboard, all 4,920 trajectories, the EN/CS comparisons and the flagged spans,
+alongside the raw results they reduce from. Built by
+[scripts/build_site.py](scripts/build_site.py) from the same code as the live
+viewer ([§8.1](#81-the-leaderboard-page)); see `docs/DEPLOYMENT.md` for how it is
+assembled and what is redacted on the way out.
+
 ---
 
 ## 1. Scope
