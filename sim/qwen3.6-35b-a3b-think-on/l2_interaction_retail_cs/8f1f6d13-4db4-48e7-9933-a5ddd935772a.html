@@ -1,0 +1,107 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>task 33 &middot; CzTauBench</title><link rel=icon href='../../../static/favicon.ico' sizes=any><script>try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script><link rel=preconnect href='https://fonts.googleapis.com'><link rel=preconnect href='https://fonts.gstatic.com' crossorigin><link rel=stylesheet href='https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap'><link rel=stylesheet href='../../../static/style.css'></head><body><header class=mast><a class=brand href='https://lokalni.ai' aria-label='lokalni.ai'><img class=logo-light src='../../../static/logo_dark.png' alt='lokalni.ai' width=102 height=32><img class=logo-dark src='../../../static/logo_light.png' alt='lokalni.ai' width=102 height=32></a><span class=mastsep>&frasl;</span><a class=proj href='https://lokalni.ai/blog/umi-agenti-cesky-3/'>Um&iacute; agenti &#269;esky? &#268;&aacute;st 3: Konverzace s u&#382;ivatelem</a><span class=spacer></span><button class=tgl type=button data-theme-toggle aria-label='Switch theme' title='Switch theme'><svg class=sun viewBox='0 0 24 24' aria-hidden=true><circle cx=12 cy=12 r=4 /><path d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4' /></svg><svg class=moon viewBox='0 0 24 24' aria-hidden=true><path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z' /></svg></button></header><div class=picker><div class=pickhd><span class=pickcell>l2_interaction_retail_cs</span><span class=sub2>qwen3.6-35b-a3b-think-on</span><span class=spacer></span><a class='nav prev' href='30665550-dd7a-45b6-9890-6cc50f316295.html'>&larr; prev</a><span class=sub2>102 / 342</span><a class='nav next' href='52723918-1276-484d-8cc7-66a73d6361ae.html'>next &rarr;</a></div><div class=chips data-chips data-cur='8f1f6d13-4db4-48e7-9933-a5ddd935772a'></div></div><script src='../../../static/picker/qwen3.6-35b-a3b-think-on__l2_interaction_retail_cs.js'></script><h1>task 33 &middot; trial 2</h1><div class=sub><a href='../../../index.html'>&larr; leaderboard</a> &middot; <a href='../../../compare/qwen3.6-35b-a3b-think-on/retail/33.html'>compare EN/CS</a></div><div class=sub>reward <b>1.00</b> &middot; DB 1.00 &middot; language 1.00 (8/8 turns in cs) &middot; 160s &middot; user_stop</div><div class=briefslot data-brief='d6d0cd827f894157'></div><script src='../../../static/brief/d6d0cd827f894157.js'></script><div class='msg assistant'><div class=role>agent</div>Dobrý den! Jak vám mohu dnes pomoci?</div><div class='msg user'><div class=role>user</div>Dobrý den! No, mám tu takovou malou životní krizi, tak snad mi pomůžete. 😅
+
+Objednal jsem si u vás pár věcí – nějaké vybavení na home office a taky turistické věci. Plán byl geniální: odjet k rodičům do Seattlu, pracovat na dálku s výhledem na hory, o víkendech turistika... No a pak nám firma oznámila, že se všichni vracíme do kanceláře. Takže můj sen o práci v přírodě je v troskách a já tu mám objednávku, jejíž polovinu už nepotřebuju.
+
+Jde vůbec zrušit jen část objednávky? Ty kancelářské věci bych vrátil, ale turistické vybavení si nechám – aspoň něco z toho plánu přežije, že jo.</div><div class='msg assistant'><div class=role>agent</div>
+
+Dobrý den! Chápu, že jste zklamaný z plánů na práci v přírodě. Rád vám pomohu s vaší objednávkou.
+
+Než začneme, musím ověřit vaši identitu. Mohl byste mi prosím sdělit svou e-mailovou adresu, kterou jste použil při objednávce? Nebo mi můžete sdělit své jméno, příjmení a PSČ.</div><div class='msg user'><div class=role>user</div>No, s tím e-mailem je to trochu problém – mám jich tolik, že si už nepamatuju, který jsem použil. 😅 Home office mi udělal z mozku takovou kaši, že si pamatuju heslo od Netflixu, ale ne vlastní e-mail.
+
+Ale jméno a PSČ vím, to ještě mozek zvládá! Jmenuji se **Noah Patel** a PSČ je **10108** – to je tady v New Yorku, v srdci Big Apple. 🍎
+
+Najdete mě v systému?</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; find_user_id_by_name_zip({&quot;first_name&quot;: &quot;Noah&quot;, &quot;last_name&quot;: &quot;Patel&quot;, &quot;zip&quot;: &quot;10108&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>noah_patel_6952</div><div class='msg assistant'><div class=role>agent</div>Skvělé, našel jsem vás v systému! Jste uživatel s ID: noah_patel_6952
+
+Nyní se podívám na vaše objednávky, abych mohl zjistit, co přesně potřebujete udělat.<div class=tc>&rarr; get_user_details({&quot;user_id&quot;: &quot;noah_patel_6952&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;name&quot;: {&quot;first_name&quot;: &quot;Noah&quot;, &quot;last_name&quot;: &quot;Patel&quot;}, &quot;address&quot;: {&quot;address1&quot;: &quot;224 Elm Street&quot;, &quot;address2&quot;: &quot;Suite 491&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;NY&quot;, &quot;zip&quot;: &quot;10108&quot;}, &quot;email&quot;: &quot;noah.patel1792@example.com&quot;, &quot;payment_methods&quot;: {&quot;paypal_3169710&quot;: {&quot;source&quot;: &quot;paypal&quot;, &quot;id&quot;: &quot;paypal_3169710&quot;}}, &quot;orders&quot;: [&quot;#W1845024&quot;, &quot;#W7043598&quot;, &quot;#W6111398&quot;]}</div><div class='msg assistant'><div class=role>agent</div>Děkuji, Noah! Vidím, že máte tři objednávky: #W1845024, #W7043598 a #W6111398.
+
+Než budu moci pomoci, musím zkontrolovat status každé z nich. Začnu první objednávkou.<div class=tc>&rarr; get_order_details({&quot;order_id&quot;: &quot;#W1845024&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;order_id&quot;: &quot;#W1845024&quot;, &quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;address&quot;: {&quot;address1&quot;: &quot;517 Lakeview Drive&quot;, &quot;address2&quot;: &quot;Suite 183&quot;, &quot;city&quot;: &quot;Seattle&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;WA&quot;, &quot;zip&quot;: &quot;98195&quot;}, &quot;items&quot;: [{&quot;name&quot;: &quot;Mechanical Keyboard&quot;, &quot;product_id&quot;: &quot;1656367028&quot;, &quot;item_id&quot;: &quot;1340995114&quot;, &quot;price&quot;: 235.13, &quot;options&quot;: {&quot;switch type&quot;: &quot;tactile&quot;, &quot;backlight&quot;: &quot;none&quot;, &quot;size&quot;: &quot;full size&quot;}}, {&quot;name&quot;: &quot;Cycling Helmet&quot;, &quot;product_id&quot;: &quot;7765186836&quot;, &quot;item_id&quot;: &quot;3358616356&quot;, &quot;price&quot;: 197.33, &quot;options&quot;: {&quot;size&quot;: &quot;S&quot;, &quot;color&quot;: &quot;red&quot;, &quot;ventilation&quot;: &quot;low&quot;}}, {&quot;name&quot;: &quot;Headphones&quot;, &quot;product_id&quot;: &quot;6992792935&quot;, &quot;item_id&quot;: &quot;7493556126&quot;, &quot;price&quot;: 346.97, &quot;options&quot;: {&quot;type&quot;: &quot;over-ear&quot;, &quot;connectivity&quot;: &quot;wireless&quot;, &quot;color&quot;: &quot;black&quot;}}, {&quot;name&quot;: &quot;Office Chair&quot;, &quot;product_id&quot;: &quot;4794339885&quot;, &quot;item_id&quot;: &quot;8323284863&quot;, &quot;price&quot;: 511.24, &quot;options&quot;: {&quot;material&quot;: &quot;fabric&quot;, &quot;color&quot;: &quot;blue&quot;, &quot;armrest&quot;: &quot;adjustable&quot;, &quot;backrest height&quot;: &quot;standard&quot;}}, {&quot;name&quot;: &quot;Hiking Boots&quot;, &quot;product_id&quot;: &quot;7363354090&quot;, &quot;item_id&quot;: &quot;8277474082&quot;, &quot;price&quot;: 236.57, &quot;options&quot;: {&quot;size&quot;: &quot;12&quot;, &quot;material&quot;: &quot;leather&quot;, &quot;waterproof&quot;: &quot;yes&quot;}}], &quot;status&quot;: &quot;pending&quot;, &quot;fulfillments&quot;: [], &quot;payment_history&quot;: [{&quot;transaction_type&quot;: &quot;payment&quot;, &quot;amount&quot;: 1527.24, &quot;payment_method_id&quot;: &quot;paypal_3169710&quot;}], &quot;cancel_reason&quot;: null, &quot;exchange_items&quot;: null, &quot;exchange_new_items&quot;: null, &quot;exchange_payment_method_id&quot;: null, &quot;exchange_price_difference&quot;: null, &quot;return_items&quot;: null, &quot;return_payment_method_id&quot;: null}</div><div class='msg assistant'><div class=role>agent</div>Děkuji za trpělivost. Vidím, že máte objednávku #W1845024 ve stavu &quot;pending&quot; (čekající na zpracování). Tato objednávka obsahuje:
+
+- Mechanical Keyboard (kancelářské vybavení)
+- Cycling Helmet (turistické vybavení)
+- Headphones (kancelářské vybavení)
+- Office Chair (kancelářské vybavení)
+- Hiking Boots (turistické vybavení)
+
+Nyní si zkontroluji i ostatní objednávky.<div class=tc>&rarr; get_order_details({&quot;order_id&quot;: &quot;#W7043598&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;order_id&quot;: &quot;#W7043598&quot;, &quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;address&quot;: {&quot;address1&quot;: &quot;224 Elm Street&quot;, &quot;address2&quot;: &quot;Suite 491&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;NY&quot;, &quot;zip&quot;: &quot;10108&quot;}, &quot;items&quot;: [{&quot;name&quot;: &quot;E-Reader&quot;, &quot;product_id&quot;: &quot;3801771308&quot;, &quot;item_id&quot;: &quot;9494281769&quot;, &quot;price&quot;: 252.06, &quot;options&quot;: {&quot;screen size&quot;: &quot;8-inch&quot;, &quot;connectivity&quot;: &quot;Wi-Fi&quot;, &quot;storage&quot;: &quot;8GB&quot;}}, {&quot;name&quot;: &quot;Sneakers&quot;, &quot;product_id&quot;: &quot;7471004230&quot;, &quot;item_id&quot;: &quot;6477915553&quot;, &quot;price&quot;: 186.45, &quot;options&quot;: {&quot;size&quot;: &quot;6&quot;, &quot;color&quot;: &quot;black&quot;, &quot;material&quot;: &quot;synthetic&quot;}}, {&quot;name&quot;: &quot;Espresso Machine&quot;, &quot;product_id&quot;: &quot;4354588079&quot;, &quot;item_id&quot;: &quot;5839483328&quot;, &quot;price&quot;: 2929.06, &quot;options&quot;: {&quot;pressure&quot;: &quot;15 bar&quot;, &quot;capacity&quot;: &quot;2L&quot;, &quot;type&quot;: &quot;automatic&quot;}}, {&quot;name&quot;: &quot;T-Shirt&quot;, &quot;product_id&quot;: &quot;9523456873&quot;, &quot;item_id&quot;: &quot;1176194968&quot;, &quot;price&quot;: 52.88, &quot;options&quot;: {&quot;color&quot;: &quot;black&quot;, &quot;size&quot;: &quot;S&quot;, &quot;material&quot;: &quot;polyester&quot;, &quot;style&quot;: &quot;crew neck&quot;}}], &quot;status&quot;: &quot;cancelled&quot;, &quot;fulfillments&quot;: [{&quot;tracking_id&quot;: [&quot;235464230524&quot;], &quot;item_ids&quot;: [&quot;9494281769&quot;, &quot;6477915553&quot;, &quot;5839483328&quot;, &quot;1176194968&quot;]}], &quot;payment_history&quot;: [{&quot;transaction_type&quot;: &quot;payment&quot;, &quot;amount&quot;: 3420.45, &quot;payment_method_id&quot;: &quot;paypal_3169710&quot;}, {&quot;transaction_type&quot;: &quot;refund&quot;, &quot;amount&quot;: 3420.45, &quot;payment_method_id&quot;: &quot;paypal_3169710&quot;}], &quot;cancel_reason&quot;: null, &quot;exchange_items&quot;: null, &quot;exchange_new_items&quot;: null, &quot;exchange_payment_method_id&quot;: null, &quot;exchange_price_difference&quot;: null, &quot;return_items&quot;: null, &quot;return_payment_method_id&quot;: null}</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; get_order_details({&quot;order_id&quot;: &quot;#W6111398&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;order_id&quot;: &quot;#W6111398&quot;, &quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;address&quot;: {&quot;address1&quot;: &quot;224 Elm Street&quot;, &quot;address2&quot;: &quot;Suite 491&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;NY&quot;, &quot;zip&quot;: &quot;10108&quot;}, &quot;items&quot;: [{&quot;name&quot;: &quot;Skateboard&quot;, &quot;product_id&quot;: &quot;1968349452&quot;, &quot;item_id&quot;: &quot;4293355847&quot;, &quot;price&quot;: 200.8, &quot;options&quot;: {&quot;deck material&quot;: &quot;bamboo&quot;, &quot;length&quot;: &quot;31 inch&quot;, &quot;design&quot;: &quot;plain&quot;}}, {&quot;name&quot;: &quot;T-Shirt&quot;, &quot;product_id&quot;: &quot;9523456873&quot;, &quot;item_id&quot;: &quot;9647292434&quot;, &quot;price&quot;: 53.48, &quot;options&quot;: {&quot;color&quot;: &quot;purple&quot;, &quot;size&quot;: &quot;S&quot;, &quot;material&quot;: &quot;polyester&quot;, &quot;style&quot;: &quot;v-neck&quot;}}, {&quot;name&quot;: &quot;Skateboard&quot;, &quot;product_id&quot;: &quot;1968349452&quot;, &quot;item_id&quot;: &quot;4545791457&quot;, &quot;price&quot;: 186.06, &quot;options&quot;: {&quot;deck material&quot;: &quot;plastic&quot;, &quot;length&quot;: &quot;28 inch&quot;, &quot;design&quot;: &quot;plain&quot;}}, {&quot;name&quot;: &quot;Headphones&quot;, &quot;product_id&quot;: &quot;6992792935&quot;, &quot;item_id&quot;: &quot;3104857380&quot;, &quot;price&quot;: 377.97, &quot;options&quot;: {&quot;type&quot;: &quot;on-ear&quot;, &quot;connectivity&quot;: &quot;wireless&quot;, &quot;color&quot;: &quot;red&quot;}}], &quot;status&quot;: &quot;cancelled&quot;, &quot;fulfillments&quot;: [{&quot;tracking_id&quot;: [&quot;799127560400&quot;], &quot;item_ids&quot;: [&quot;4293355847&quot;, &quot;9647292434&quot;, &quot;4545791457&quot;, &quot;3104857380&quot;]}], &quot;payment_history&quot;: [{&quot;transaction_type&quot;: &quot;payment&quot;, &quot;amount&quot;: 818.31, &quot;payment_method_id&quot;: &quot;paypal_3169710&quot;}, {&quot;transaction_type&quot;: &quot;refund&quot;, &quot;amount&quot;: 818.31, &quot;payment_method_id&quot;: &quot;paypal_3169710&quot;}], &quot;cancel_reason&quot;: null, &quot;exchange_items&quot;: null, &quot;exchange_new_items&quot;: null, &quot;exchange_payment_method_id&quot;: null, &quot;exchange_price_difference&quot;: null, &quot;return_items&quot;: null, &quot;return_payment_method_id&quot;: null}</div><div class='msg assistant'><div class=role>agent</div>
+
+Děkuji za trpělivost, Noah. Prošel jsem všechny vaše objednávky a mám pro vás následující informace:
+
+**Vaše objednávky:**
+1. **#W1845024** - stav: **pending** (čekající na zpracování)
+   - Mechanical Keyboard (kancelářské vybavení)
+   - Cycling Helmet (turistické vybavení)
+   - Headphones (kancelářské vybavení)
+   - Office Chair (kancelářské vybavení)
+   - Hiking Boots (turistické vybavení)
+
+2. **#W7043598** - stav: **cancelled** (zrušená)
+3. **#W6111398** - stav: **cancelled** (zrušená)
+
+Jediná aktivní objednávka je **#W1845024**, která je ve stavu &quot;pending&quot;.
+
+**Nyní k vaší otázce:** Bohužel **nelze zrušit jen část objednávky**. Podle našich pravidel se objednávka buď zruší celá, nebo se ne.
+
+**Vaše možnosti pro objednávku #W1845024:**
+
+1. **Zrušit celou objednávku** - Pokud zvolíte tuto možnost, objednávka bude zrušena celá a peníze vám budou vráceny na PayPal (vzhledem k tomu, že platba byla provedena přes PayPal, refundace bude trvat 5-7 pracovních dnů).
+
+2. **Počkat na doručení a pak vrátit kancelářské vybavení** - Pokud necháte objednávku běžet, po doručení (kdy se status změní na &quot;delivered&quot;) můžete vrátit pouze kancelářské vybavení (Mechanical Keyboard, Headphones, Office Chair) a nechat si turistické vybavení (Cycling Helmet, Hiking Boots).
+
+Kterou možnost preferujete? Pokud chcete zrušit celou objednávku, potřebuji vědět důvod zrušení - buď &quot;no longer needed&quot; (již nepotřebuji) nebo &quot;ordered by mistake&quot; (omylem objednáno).</div><div class='msg user'><div class=role>user</div>Aha, takže buď všechno, nebo nic! To je jako když mi firma řekla &quot;buď kancelář, nebo nic&quot; – žádný kompromis. 😅
+
+Dobře, tak když nemůžu zrušit jen ty kancelářské věci, tak **objednávku nechám běžet**. Počkám na doručení a pak ty kancelářské věci vrátím. Aspoň si nechám turistické vybavení – helma a boty se hodí i na víkendové útěky z města, když už nemůžu pracovat z hor.
+
+Ale protože už tu máme ten chat, chtěl bych vás poprosit ještě o jednu věc: **změnit moji výchozí adresu v profilu** na adresu mých rodičů v Seattlu. Ta adresa je uvedená v té objednávce #W1845024 – můžete ji tam najít? Nechci ji tady v chatu vypisovat, víte, soukromí a tak. 😊
+
+Jde to udělat?</div><div class='msg assistant'><div class=role>agent</div>
+
+Rozumím, necháte objednávku běžet a po doručení vrátíte kancelářské vybavení. To je rozumný plán!
+
+Nyní k změně adresy. Z objednávky #W1845024 vidím následující adresu:
+- **517 Lakeview Drive, Suite 183**
+- **Seattle, WA 98195**
+- **USA**
+
+Chcete změnit svou výchozí adresu v profilu na tuto adresu?
+
+**Detaily změny:**
+- Aktuální adresa: 224 Elm Street, Suite 491, New York, NY 10108, USA
+- Nová adresa: 517 Lakeview Drive, Suite 183, Seattle, WA 98195, USA
+
+Potvrzujete, že chcete změnit svou výchozí adresu na tuto adresu? Odpovězte &quot;yes&quot; pro potvrzení nebo &quot;no&quot; pro zrušení.</div><div class='msg user'><div class=role>user</div>Ano, přesně tak! Ta adresa v Seattlu je správně – to je domek mých rodičů, kde jsem chtěl trávit ty home office dny. No, aspoň tam budu moct posílat balíčky, když už tam nemůžu pracovat. 😄
+
+Takže **yes**, potvrzuji změnu výchozí adresy na tu seattleskou adresu z objednávky.
+
+Díky moc za pomoc! Aspoň něco se dnes povedlo vyřešit. 🙌</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; modify_user_address({&quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;address1&quot;: &quot;517 Lakeview Drive&quot;, &quot;address2&quot;: &quot;Suite 183&quot;, &quot;city&quot;: &quot;Seattle&quot;, &quot;state&quot;: &quot;WA&quot;, &quot;zip&quot;: &quot;98195&quot;, &quot;country&quot;: &quot;USA&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;user_id&quot;: &quot;noah_patel_6952&quot;, &quot;name&quot;: {&quot;first_name&quot;: &quot;Noah&quot;, &quot;last_name&quot;: &quot;Patel&quot;}, &quot;address&quot;: {&quot;address1&quot;: &quot;517 Lakeview Drive&quot;, &quot;address2&quot;: &quot;Suite 183&quot;, &quot;city&quot;: &quot;Seattle&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;WA&quot;, &quot;zip&quot;: &quot;98195&quot;}, &quot;email&quot;: &quot;noah.patel1792@example.com&quot;, &quot;payment_methods&quot;: {&quot;paypal_3169710&quot;: {&quot;source&quot;: &quot;paypal&quot;, &quot;id&quot;: &quot;paypal_3169710&quot;}}, &quot;orders&quot;: [&quot;#W1845024&quot;, &quot;#W7043598&quot;, &quot;#W6111398&quot;]}</div><div class='msg assistant'><div class=role>agent</div>
+
+Skvělé! Vaše výchozí adresa byla úspěšně změněna na:
+
+**517 Lakeview Drive, Suite 183**  
+**Seattle, WA 98195**  
+**USA**
+
+Všechny budoucí objednávky budou nyní automaticky odesílány na tuto adresu.
+
+**Shrnutí toho, co jsme dnes vyřešili:**
+1. ✅ Zjistili jsme, že nelze zrušit jen část objednávky - je to buď všechno, nebo nic
+2. ✅ Rozhodli jste se nechat objednávku #W1845024 běžet a po doručení vrátit kancelářské vybavení (Mechanical Keyboard, Headphones, Office Chair)
+3. ✅ Úspěšně jsme změnili vaši výchozí adresu na adresu v Seattlu
+
+**Další kroky:**
+- Počkejte, až se objednávka #W1845024 doručí (status se změní na &quot;delivered&quot;)
+- Poté se na nás obraťte a my vám pomůžeme s vrácením kancelářského vybavení
+- Turistické vybavení (Cycling Helmet a Hiking Boots) si necháte
+
+Máte ještě nějaké další otázky nebo potřebujete s něčím pomoci?</div><div class='msg user'><div class=role>user</div>Perfektní! Díky moc za všechno! 🎉
+
+Takže rekapitulace mého dnešního dramatu:
+- Home office sen: ❌ zrušen firmou
+- Částečné zrušení objednávky: ❌ nejde
+- Výchozí adresa na Seattle: ✅ hotovo!
+- Turistické vybavení: ✅ zůstává mi!
+
+No, aspoň ty boty a helmu si nechám – budu potřebovat něco na útěk z kanceláře o víkendech. A až mi dorazí ta objednávka, ozvu se vám ohledně vrácení těch kancelářských věcí.
+
+To je všechno, co jsem potřeboval vyřešit. Díky za trpělivost s mým home office chaosem! Mějte se krásně! 😊
+
+###STOP###</div><div class=note>Agent turns outlined in red were detected as off-target language by fastText. Highlighted phrases were flagged by the Czech language judge &mdash; hover for the reason. The panels above are the instructions behind the conversation; each is tagged with which party could actually see it, because the agent is not told what the customer was asked to do and is graded on criteria neither side is shown. Use &larr; and &rarr; to step through the cell.</div><script>document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||e.target.isContentEditable)return;var s=e.key==='ArrowLeft'?'.nav.prev':e.key==='ArrowRight'?'.nav.next':0;if(!s)return;var a=document.querySelector('a'+s);if(a){e.preventDefault();location.href=a.href;}});</script><script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-theme-toggle]');if(!b)return;var d=document.documentElement,n=d.getAttribute('data-theme')==='dark'?'light':'dark';if(n==='dark')d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('theme',n);}catch(err){}});</script></body></html>

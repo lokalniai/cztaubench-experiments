@@ -1,0 +1,249 @@
+{
+  "fetched": "2026-08-06",
+  "source": "https://github.com/sierra-research/tau2-bench/tree/main/web/leaderboard/public/submissions",
+  "leaderboard": "https://taubench.com/leaderboard?benchmark=core",
+  "core": [
+    {
+      "key": "claude-opus-4-5_sierra_2026-02-26",
+      "model": "Claude Opus 4.5",
+      "org": "Anthropic",
+      "effort": "high",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-02-26",
+      "featured": true,
+      "airline": {
+        "p1": 0.84,
+        "p2": 0.7767000000000001,
+        "p3": 0.735,
+        "p4": 0.7
+      },
+      "retail": {
+        "p1": 0.7961,
+        "p2": 0.674,
+        "p3": 0.5877,
+        "p4": 0.5175
+      },
+      "telecom": {
+        "p1": 0.9231999999999999,
+        "p2": 0.8611,
+        "p3": 0.8136,
+        "p4": 0.7807
+      }
+    },
+    {
+      "key": "gpt-5-2_sierra_2026-02-26",
+      "model": "GPT-5.2",
+      "org": "OpenAI",
+      "effort": "high",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-02-26",
+      "featured": true,
+      "airline": {
+        "p1": 0.83,
+        "p2": 0.7833,
+        "p3": 0.75,
+        "p4": 0.72
+      },
+      "retail": {
+        "p1": 0.8158,
+        "p2": 0.6959000000000001,
+        "p3": 0.5987,
+        "p4": 0.5175
+      },
+      "telecom": {
+        "p1": 0.8969,
+        "p2": 0.8245999999999999,
+        "p3": 0.7675,
+        "p4": 0.7193
+      }
+    },
+    {
+      "key": "glm-5-think_sierra_2026-03-02",
+      "model": "GLM-5",
+      "org": "Zhipu AI",
+      "effort": "enabled",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-03-02",
+      "featured": false,
+      "airline": {
+        "p1": 0.825,
+        "p2": 0.76,
+        "p3": 0.72,
+        "p4": 0.7
+      },
+      "retail": {
+        "p1": 0.7368000000000001,
+        "p2": 0.6038,
+        "p3": 0.511,
+        "p4": 0.4386
+      },
+      "telecom": {
+        "p1": 0.8684000000000001,
+        "p2": 0.7631999999999999,
+        "p3": 0.682,
+        "p4": 0.6228
+      }
+    },
+    {
+      "key": "gemini-3-flash_sierra_2026-03-02",
+      "model": "Gemini 3 Flash",
+      "org": "Google",
+      "effort": "high",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-03-02",
+      "featured": false,
+      "airline": {
+        "p1": 0.825,
+        "p2": 0.7633,
+        "p3": 0.72,
+        "p4": 0.68
+      },
+      "retail": {
+        "p1": 0.7675,
+        "p2": 0.6594,
+        "p3": 0.5789,
+        "p4": 0.5175
+      },
+      "telecom": {
+        "p1": 0.9123,
+        "p2": 0.8348,
+        "p3": 0.7654000000000001,
+        "p4": 0.7018000000000001
+      }
+    },
+    {
+      "key": "qwen3.5-397b-a17b-think_sierra_2026-03-02",
+      "model": "Qwen3.5-397B-A17B",
+      "org": "Alibaba Cloud",
+      "effort": "enabled",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-03-02",
+      "featured": true,
+      "airline": {
+        "p1": 0.815,
+        "p2": 0.7567,
+        "p3": 0.715,
+        "p4": 0.68
+      },
+      "retail": {
+        "p1": 0.8443,
+        "p2": 0.7442,
+        "p3": 0.6645,
+        "p4": 0.5965
+      },
+      "telecom": {
+        "p1": 0.9781,
+        "p2": 0.9576,
+        "p3": 0.9386,
+        "p4": 0.9211
+      }
+    },
+    {
+      "key": "gemini-3-pro_sierra_2026-03-02",
+      "model": "Gemini 3 Pro",
+      "org": "Google",
+      "effort": "high",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-03-02",
+      "featured": true,
+      "airline": {
+        "p1": 0.805,
+        "p2": 0.7467,
+        "p3": 0.7,
+        "p4": 0.66
+      },
+      "retail": {
+        "p1": 0.7587999999999999,
+        "p2": 0.6345000000000001,
+        "p3": 0.5439,
+        "p4": 0.47369999999999995
+      },
+      "telecom": {
+        "p1": 0.9101,
+        "p2": 0.845,
+        "p3": 0.7917000000000001,
+        "p4": 0.7456
+      }
+    },
+    {
+      "key": "claude-sonnet-4-5_sierra_2026-02-26",
+      "model": "Claude Sonnet 4.5",
+      "org": "Anthropic",
+      "effort": "enabled",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-02-26",
+      "featured": false,
+      "airline": {
+        "p1": 0.72,
+        "p2": 0.62,
+        "p3": 0.545,
+        "p4": 0.48
+      },
+      "retail": {
+        "p1": 0.7237,
+        "p2": 0.5746,
+        "p3": 0.47369999999999995,
+        "p4": 0.3947
+      },
+      "telecom": {
+        "p1": 0.8487,
+        "p2": 0.7544,
+        "p3": 0.6886,
+        "p4": 0.6404000000000001
+      }
+    },
+    {
+      "key": "gpt-5-2-none_sierra_2026-02-26",
+      "model": "GPT-5.2",
+      "org": "OpenAI",
+      "effort": "none",
+      "tau2_version": "1.0.1",
+      "user_simulator": "gpt-5.2",
+      "date": "2026-02-26",
+      "featured": false,
+      "airline": {
+        "p1": 0.525,
+        "p2": 0.3566666666666667,
+        "p3": 0.27,
+        "p4": 0.22
+      },
+      "retail": {
+        "p1": 0.75,
+        "p2": 0.6213450292397662,
+        "p3": 0.5307017543859649,
+        "p4": 0.45614035087719296
+      },
+      "telecom": {
+        "p1": 0.5723684210526315,
+        "p2": 0.4283625730994152,
+        "p3": 0.35526315789473684,
+        "p4": 0.30701754385964913
+      }
+    },
+    {
+      "key": "raft-30b-a3b_neu_2026-04-29",
+      "model": "RAFT-30B-A3B",
+      "org": "Northeastern University HAI Lab",
+      "effort": null,
+      "tau2_version": null,
+      "user_simulator": "claude-sonnet-4-5-20250929",
+      "date": "2026-04-30",
+      "featured": false,
+      "airline": null,
+      "retail": {
+        "p1": 0.8245614035087719,
+        "p2": 0.7295321637426901,
+        "p3": 0.6622807017543859,
+        "p4": 0.6140350877192983
+      },
+      "telecom": null
+    }
+  ]
+}

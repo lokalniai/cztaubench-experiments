@@ -1,0 +1,91 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>task 34 &middot; CzTauBench</title><link rel=icon href='../../../static/favicon.ico' sizes=any><script>try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script><link rel=preconnect href='https://fonts.googleapis.com'><link rel=preconnect href='https://fonts.gstatic.com' crossorigin><link rel=stylesheet href='https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap'><link rel=stylesheet href='../../../static/style.css'></head><body><header class=mast><a class=brand href='https://lokalni.ai' aria-label='lokalni.ai'><img class=logo-light src='../../../static/logo_dark.png' alt='lokalni.ai' width=102 height=32><img class=logo-dark src='../../../static/logo_light.png' alt='lokalni.ai' width=102 height=32></a><span class=mastsep>&frasl;</span><a class=proj href='https://lokalni.ai/blog/umi-agenti-cesky-3/'>Um&iacute; agenti &#269;esky? &#268;&aacute;st 3: Konverzace s u&#382;ivatelem</a><span class=spacer></span><button class=tgl type=button data-theme-toggle aria-label='Switch theme' title='Switch theme'><svg class=sun viewBox='0 0 24 24' aria-hidden=true><circle cx=12 cy=12 r=4 /><path d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4' /></svg><svg class=moon viewBox='0 0 24 24' aria-hidden=true><path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z' /></svg></button></header><div class=picker><div class=pickhd><span class=pickcell>l2_interaction_airline_cs</span><span class=sub2>deepseek-v4-flash-fp4-think-on</span><span class=spacer></span><a class='nav prev' href='685d5308-f0cb-4903-a871-41e39f627345.html'>&larr; prev</a><span class=sub2>103 / 150</span><a class='nav next' href='98dbbe41-27ff-40ce-8edb-afd60ee0c6a2.html'>next &rarr;</a></div><div class=chips data-chips data-cur='8d537b74-389d-484d-9641-55754fa2e12b'></div></div><script src='../../../static/picker/deepseek-v4-flash-fp4-think-on__l2_interaction_airline_cs.js'></script><h1>task 34 &middot; trial 0</h1><div class=sub><a href='../../../index.html'>&larr; leaderboard</a> &middot; <a href='../../../compare/deepseek-v4-flash-fp4-think-on/airline/34.html'>compare EN/CS</a></div><div class=sub>reward <b>1.00</b> &middot; DB 1.00 &middot; COMMUNICATE 1.00 &middot; language 1.00 (9/9 turns in cs) &middot; 269s &middot; user_stop</div><div class=sub>Czech language judge: <span class='sev MAJOR'>0 major</span> <span class='sev MINOR'>4 minor</span></div><div class=briefslot data-brief='e03490e5fa0ddca8'></div><script src='../../../static/brief/e03490e5fa0ddca8.js'></script><div class='msg assistant'><div class=role>agent</div>Dobrý den! Jak vám mohu dnes pomoci?</div><div class='msg user'><div class=role>user</div>Dobrý den! Jmenuji se Yara Garcia a ráda bych změnila svou rezervaci HXDUBJ. Potřebovala bych změnit odletový let na přímý let o den později, a zároveň posunout zpáteční let ze SFO také o jeden den. Kromě toho bych chtěla přejít do business třídy a přidat 2 odbavená zavazadla. Mohli byste mi s tím prosím pomoci?</div><div class='msg assistant'><div class=role>agent</div>Dobrý den, Yaro! Ráda vám pomohu se změnou rezervace. Nejprve mi prosím potvrďte vaše uživatelské ID, abych mohla ověřit vaši rezervaci.</div><div class='msg user'><div class=role>user</div>Samozřejmě, moje uživatelské ID je yara_garcia_1905.</div><div class='msg assistant'><div class=role>agent</div>Děkuji! Ověřím vaši rezervaci.
+
+<div class=tc>&rarr; get_user_details({&quot;user_id&quot;: &quot;yara_garcia_1905&quot;})</div><div class=tc>&rarr; get_reservation_details({&quot;reservation_id&quot;: &quot;HXDUBJ&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;name&quot;: {&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;}, &quot;address&quot;: {&quot;address1&quot;: &quot;377 Pine Lane&quot;, &quot;address2&quot;: &quot;Suite 694&quot;, &quot;city&quot;: &quot;Denver&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;CO&quot;, &quot;zip&quot;: &quot;80212&quot;}, &quot;email&quot;: &quot;yara.garcia6882@example.com&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;, &quot;payment_methods&quot;: {&quot;certificate_2345996&quot;: {&quot;source&quot;: &quot;certificate&quot;, &quot;id&quot;: &quot;certificate_2345996&quot;, &quot;amount&quot;: 150.0}, &quot;gift_card_6941833&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 152.0}, &quot;gift_card_1646646&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_1646646&quot;, &quot;amount&quot;: 200.0}}, &quot;saved_passengers&quot;: [{&quot;first_name&quot;: &quot;James&quot;, &quot;last_name&quot;: &quot;Khan&quot;, &quot;dob&quot;: &quot;1959-08-18&quot;}], &quot;membership&quot;: &quot;gold&quot;, &quot;reservations&quot;: [&quot;HXDUBJ&quot;, &quot;DXG8T6&quot;, &quot;46BBSE&quot;, &quot;P9VXUO&quot;]}</div><div class='msg tool'><div class=role>tool result</div>{&quot;reservation_id&quot;: &quot;HXDUBJ&quot;, &quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;flight_type&quot;: &quot;round_trip&quot;, &quot;cabin&quot;: &quot;economy&quot;, &quot;flights&quot;: [{&quot;flight_number&quot;: &quot;HAT085&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;JFK&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 177}, {&quot;flight_number&quot;: &quot;HAT023&quot;, &quot;origin&quot;: &quot;JFK&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 146}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;date&quot;: &quot;2024-05-22&quot;, &quot;price&quot;: 180}], &quot;passengers&quot;: [{&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;}], &quot;payment_history&quot;: [{&quot;payment_id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 533}], &quot;created_at&quot;: &quot;2024-05-04T06:04:48&quot;, &quot;total_baggages&quot;: 0, &quot;nonfree_baggages&quot;: 0, &quot;insurance&quot;: &quot;yes&quot;, &quot;status&quot;: null}</div><div class='msg assistant'><div class=role>agent</div>Děkuji, Yaro! Ověřila jsem vaši rezervaci. Nyní vyhledám dostupné přímé lety pro vaši změnu.
+
+Vaše rezervace:
+- **Trasa:** IAH → SFO (zpáteční)
+- **Současné lety:**
+  - HAT085: IAH → JFK (2024-05-18)
+  - HAT023: JFK → SFO (2024-05-18)
+  - HAT278: SFO → IAH (2024-05-22)
+- **Třída:** economy
+- **Cestující:** Yara Garcia (1)
+
+Vyhledám přímý let IAH → SFO na 2024-05-19 a zpáteční let SFO → IAH na 2024-05-23.
+
+<div class=tc>&rarr; search_direct_flight({&quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;date&quot;: &quot;2024-05-19&quot;})</div><div class=tc>&rarr; search_direct_flight({&quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;date&quot;: &quot;2024-05-23&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT072&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;09:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;13:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 18, &quot;economy&quot;: 9, &quot;business&quot;: 9}, &quot;prices&quot;: {&quot;basic_economy&quot;: 68, &quot;economy&quot;: 130, &quot;business&quot;: 282}}, {&quot;flight_number&quot;: &quot;HAT180&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;07:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;11:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 4, &quot;economy&quot;: 17, &quot;business&quot;: 15}, &quot;prices&quot;: {&quot;basic_economy&quot;: 65, &quot;economy&quot;: 130, &quot;business&quot;: 346}}]</div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT082&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;23:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;03:00:00+1&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 19, &quot;economy&quot;: 9, &quot;business&quot;: 2}, &quot;prices&quot;: {&quot;basic_economy&quot;: 92, &quot;economy&quot;: 164, &quot;business&quot;: 323}}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;16:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;20:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 13, &quot;economy&quot;: 5, &quot;business&quot;: 3}, &quot;prices&quot;: {&quot;basic_economy&quot;: 67, &quot;economy&quot;: 187, &quot;business&quot;: 443}}]</div><div class='msg assistant'><div class=role>agent</div>Děkuji za trpělivost, Yaro! Našla jsem dostupné přímé lety pro vaši změnu. <span class=hitwrap><mark id='a0' class='ann MINOR'>Zde jsou možnosti:
+
+**Odletový přímý let IAH → SFO (2024-05-19):**</mark><span class='tip MINOR'><b>MINOR</b>&quot;Odletový let&quot; is a calque of English &quot;outbound/departure flight&quot;; Czech does not use the adjective &quot;odletový&quot; for the outbound leg of a round trip. A native speaker would write &quot;Přímý let tam IAH → SFO&quot; or &quot;Let z IAH do SFO (tam)&quot;, paired with &quot;zpáteční let&quot;.</span></span>
+1. **HAT072** – business třída: 282 USD
+2. **HAT180** – business třída: 346 USD
+
+**Zpáteční let SFO → IAH (2024-05-23):**
+1. **HAT082** – business třída: 323 USD
+2. **HAT278** – business třída: 443 USD
+
+Které konkrétní lety byste si přála vybrat?</div><div class='msg user'><div class=role>user</div>Děkuji! Než si vyberu, mohla byste mi prosím říct časy odletů těchto letů? Mám totiž podmínku, že let musí odlétat po 8. hodině ráno a před 9. hodinou večer. A také by mě zajímalo, kolik by celá tato změna stála dohromady – tedy včetně příplatku za business třídu a 2 odbavená zavazadla.</div><div class='msg assistant'><div class=role>agent</div>Děkuji za upřesnění! <span class=hitwrap><mark id='a1' class='ann MINOR'>Podívám se na časy odletů dostupných letů:
+
+**Odletový přímý let IAH → SFO (2024-05-19):**</mark><span class='tip MINOR'><b>MINOR</b>Same calque as above: &quot;Odletový let&quot; imitates English &quot;outbound flight&quot;. Natural Czech: &quot;Přímý let tam IAH → SFO&quot; or &quot;Let z IAH do SFO (tam)&quot;.</span></span>
+1. **HAT072** – odlet 09:00, přílet 13:00 ✓ (po 8. hodině, před 21. hodinou)
+2. **HAT180** – odlet 07:00 ✗ (před 8. hodinou ranní)
+
+**Zpáteční let SFO → IAH (2024-05-23):**
+1. **HAT082** – odlet 23:00 ✗ (po 21. hodině)
+2. **HAT278** – odlet 16:00, přílet 20:00 ✓ (po 8. hodině, před 21. hodinou)
+
+Vzhledem k vaší podmínce (odlet po 8. hodině a před 21. hodinou) jsou vhodné pouze tyto lety:
+- **HAT072** (IAH → SFO, 2024-05-19, odlet 09:00)
+- **HAT278** (SFO → IAH, 2024-05-23, odlet 16:00)
+
+**Kalkulace ceny:**
+
+Nové lety v business třídě:
+- HAT072: 282 USD
+- HAT278: 443 USD
+- Mezisoučet letů: 725 USD
+- Pojištění (30 USD): 755 USD
+
+Původní cena rezervace: 533 USD
+
+**Rozdíl k doplacení: 222 USD**
+
+Co se týče zavazadel: jako **gold** členka máte v business třídě nárok na **4 bezplatná odbavená zavazadla** na osobu, <span class=hitwrap><mark id='a2' class='ann MINOR'>takže 2 přidaná zavazadla budou **zdarma**</mark><span class='tip MINOR'><b>MINOR</b>&quot;přidaná zavazadla&quot; is a literal translation of &quot;added bags&quot;; natural Czech says &quot;zavazadla navíc&quot; (&quot;takže 2 zavazadla navíc budou zdarma&quot;).</span></span> (bez příplatku).
+
+Celkem byste tedy doplácela **222 USD**. Souhlasíte s touto změnou?</div><div class='msg user'><div class=role>user</div>Děkuji za kalkulaci. Nicméně bych chtěla upozornit na jednu věc – mám sjednané cestovní pojištění a na vašich webových stránkách jsem četla, že díky němu by měly být všechny poplatky za změnu rezervace odpuštěny. Chtěla bych požádat, abyste tuto podmínku respektovali a poplatky mi prominuli. Ta částka 30 USD za pojištění v kalkulaci by tam podle mě vůbec neměla být, když pojištění již mám. Mohla byste to prosím prověřit a cenu přepočítat?</div><div class='msg assistant'><div class=role>agent</div>Děkuji za vaši připomínku, Yaro. Ráda bych to upřesnila.
+
+Vaše cestovní pojištění (30 USD) je **již zahrnuto** v původní ceně vaší rezervace (533 USD). Není to tedy žádný nový poplatek, který by se přidával navíc – pojištění zůstává součástí rezervace beze změny.
+
+Kalkulace vypadá takto:
+
+**Původní rezervace (533 USD):**
+- Lety: 177 + 146 + 180 = 503 USD
+- Pojištění: 30 USD
+- Celkem: 533 USD
+
+**Nová rezervace (business třída):**
+- HAT072: 282 USD
+- HAT278: 443 USD
+- Pojištění: 30 USD (již zaplaceno, beze změny)
+- Celkem: 755 USD
+
+**Rozdíl k doplacení: 755 − 533 = 222 USD**
+
+Co se týče vašeho pojištění – dle našich podmínek pojištění umožňuje plnou refundaci při zrušení letu <span class=hitwrap><mark id='a3' class='ann MINOR'>z důvodu zdravotních nebo povětrnostních důvodů</mark><span class='tip MINOR'><b>MINOR</b>Redundant repetition of &quot;důvod&quot; (&quot;z důvodu ... důvodů&quot;) and the collocation &quot;povětrnostní důvody&quot; is unnatural. A native speaker would write &quot;ze zdravotních důvodů nebo kvůli počasí&quot; (or &quot;z důvodu nemoci či nepřízně počasí&quot;).</span></span>, ale nevztahuje se na prominutí rozdílu v ceně při změně letů. Rozdíl 222 USD tedy odpovídá pouze rozdílu v ceně letů za business třídu.
+
+Souhlasíte s touto změnou za 222 USD?</div><div class='msg user'><div class=role>user</div>Rozumím vašemu vysvětlení, ale přesto bych chtěla být důsledná – na webu jsem se dočetla, že s pojištěním by měly být poplatky spojené se změnami odpuštěny, a ráda bych, aby to bylo dodrženo. Nicméně i kdybych toto přijala, částka 222 USD přesahuje můj rozpočet 200 USD, který jsem si na tuto změnu vyčlenila.
+
+Protože si přeji všechny změny jako jeden balíček – přímý let následující den, posunutí zpátečního letu, business třídu a 2 zavazadla – a celková cena za tuto kombinaci je vyšší, než si mohu dovolit, raději celou žádost o změnu stornuji. Nepřeji si žádné částečné změny ani návrat do ekonomické třídy.
+
+Prosím tedy o ponechání mé původní rezervace HXDUBJ beze změn. Můžete mi to potvrdit?</div><div class='msg assistant'><div class=role>agent</div>Samozřejmě, Yaro! Rozumím. Vaše rezervace **HXDUBJ** zůstává beze změn – neprovedla jsem žádné úpravy, takže vše zůstává v původním stavu:
+
+- **Trasa:** IAH → SFO (zpáteční)
+- **Lety:**
+  - HAT085: IAH → JFK (2024-05-18)
+  - HAT023: JFK → SFO (2024-05-18)
+  - HAT278: SFO → IAH (2024-05-22)
+- **Třída:** economy
+- **Cestující:** Yara Garcia (1)
+- **Zavazadla:** 0
+- **Pojištění:** ano
+
+Vaše rezervace tedy zůstává beze změn. Ještě něco dalšího, s čím bych vám mohla pomoci?</div><div class='msg user'><div class=role>user</div>Děkuji za potvrzení a za vaši ochotu. Jsem ráda, že rezervace zůstává beze změn. To je vše, s čím jsem potřebovala pomoci. Hezký den!</div><div class='msg assistant'><div class=role>agent</div>Rádo se stalo, Yaro! Přeji vám hezký den! Pokud budete potřebovat cokoli dalšího, neváhejte se ozvat. 👋</div><div class='msg user'><div class=role>user</div>###STOP###</div><div class=note>Agent turns outlined in red were detected as off-target language by fastText. Highlighted phrases were flagged by the Czech language judge &mdash; hover for the reason. The panels above are the instructions behind the conversation; each is tagged with which party could actually see it, because the agent is not told what the customer was asked to do and is graded on criteria neither side is shown. Use &larr; and &rarr; to step through the cell.</div><script>document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||e.target.isContentEditable)return;var s=e.key==='ArrowLeft'?'.nav.prev':e.key==='ArrowRight'?'.nav.next':0;if(!s)return;var a=document.querySelector('a'+s);if(a){e.preventDefault();location.href=a.href;}});</script><script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-theme-toggle]');if(!b)return;var d=document.documentElement,n=d.getAttribute('data-theme')==='dark'?'light':'dark';if(n==='dark')d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('theme',n);}catch(err){}});</script></body></html>

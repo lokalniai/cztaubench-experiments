@@ -1,0 +1,306 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>compare task 34 &middot; CzTauBench</title><link rel=icon href='../../../static/favicon.ico' sizes=any><script>try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script><link rel=preconnect href='https://fonts.googleapis.com'><link rel=preconnect href='https://fonts.gstatic.com' crossorigin><link rel=stylesheet href='https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap'><link rel=stylesheet href='../../../static/style.css'></head><body><header class=mast><a class=brand href='https://lokalni.ai' aria-label='lokalni.ai'><img class=logo-light src='../../../static/logo_dark.png' alt='lokalni.ai' width=102 height=32><img class=logo-dark src='../../../static/logo_light.png' alt='lokalni.ai' width=102 height=32></a><span class=mastsep>&frasl;</span><a class=proj href='https://lokalni.ai/blog/umi-agenti-cesky-3/'>Um&iacute; agenti &#269;esky? &#268;&aacute;st 3: Konverzace s u&#382;ivatelem</a><span class=spacer></span><button class=tgl type=button data-theme-toggle aria-label='Switch theme' title='Switch theme'><svg class=sun viewBox='0 0 24 24' aria-hidden=true><circle cx=12 cy=12 r=4 /><path d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4' /></svg><svg class=moon viewBox='0 0 24 24' aria-hidden=true><path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z' /></svg></button></header><h1>English vs Czech &middot; task 34</h1><div class=sub><a href='../../../index.html'>&larr; all cells</a></div><div class=sub>tasks in both (trial 1): <a href='0.html'>0</a> <a href='1.html'>1</a> <a href='10.html'>10</a> <a href='11.html'>11</a> <a href='12.html'>12</a> <a href='13.html'>13</a> <a href='14.html'>14</a> <a href='15.html'>15</a> <a href='16.html'>16</a> <a href='17.html'>17</a> <a href='18.html'>18</a> <a href='19.html'>19</a> <a href='2.html'>2</a> <a href='20.html'>20</a> <a href='21.html'>21</a> <a href='22.html'>22</a> <a href='23.html'>23</a> <a href='24.html'>24</a> <a href='25.html'>25</a> <a href='26.html'>26</a> <a href='27.html'>27</a> <a href='28.html'>28</a> <a href='29.html'>29</a> <a href='3.html'>3</a> <a href='30.html'>30</a> <a href='31.html'>31</a> <a href='32.html'>32</a> <a href='33.html'>33</a> <a href='34.html'><b>34</b></a> <a href='35.html'>35</a> <a href='36.html'>36</a> <a href='37.html'>37</a> <a href='38.html'>38</a> <a href='39.html'>39</a> <a href='4.html'>4</a> <a href='40.html'>40</a> <a href='41.html'>41</a> <a href='42.html'>42</a> <a href='43.html'>43</a> <a href='44.html'>44</a> <a href='45.html'>45</a> <a href='46.html'>46</a> <a href='47.html'>47</a> <a href='48.html'>48</a> <a href='49.html'>49</a> <a href='5.html'>5</a> <a href='6.html'>6</a> <a href='7.html'>7</a> <a href='8.html'>8</a> <a href='9.html'>9</a></div><details class=brief open><summary>Customer brief<span class='who user'>user simulator only</span></summary><div class=bbody><div class=field><div class=k>reason for call</div><div class=v>You want to change your upcoming outgoing flight in reservation HXDUBJ to a nonstop flight on the next day (i.e. delay by one day). 
+
+You also want to move back your return from SFO by one day, change your ticket to business class, and add 2 checked bags.</div></div><div class=field><div class=k>known to the user</div><div class=v>You are Yara Garcia.
+
+Your user id is yara_garcia_1905.</div></div><div class=field><div class=k>how to behave</div><div class=v>You only want flights departing after 8am and before 9pm. 
+
+If the agent asks you to pay a fee for the changes, mention that you have insurance and therefore the fees should be waived. 
+
+You have read that on the website and want the agent to honor the policy. 
+
+Be persistent.
+
+You want all these changes as a complete package (nonstop next day, return delay, business class, 2 bags). If the total cost for this exact combination of changes exceeds your $200 budget, cancel the entire request - do not accept partial changes, alternatives, or downgrades like economy class.</div></div></div></details><details class=brief open><summary>What L2 Interaction changed<span class='who agent'>both, differently</span></summary><div class=bbody><div class=recon>appended to the agent's policy (<code>agent_system</code>):</div><div class=l2add>You must respond to the user entirely in the same language they use. If the user writes in Czech, you must reply in Czech. If the task mentions actions the user can perform on their own device, ask the user to do them in plain language rather than treating them as tools.
+
+Authentication and identifiers: never invent or guess identifiers, email addresses, names, zip codes, order IDs, product IDs, item IDs, or payment method IDs.</div><div class=recon>prepended to the customer brief (<code>user_system</code>):</div><div class=l2add>You must converse with the agent entirely in Czech (čeština). Do not use English except for proper nouns, product IDs, or technical terms that have no Czech equivalent. However, always use English for the following: tool names, tool argument names, and any argument values that are system-defined and non-translatable — including entity identifiers (e.g., IDs, reference codes, alphanumeric keys), enumerated constants (e.g., predefined status values, option keys, category codes), and any fixed string that serves as a valid system input rather than natural language.</div><div class=recon>opening turn (<code>greeting</code>):</div><div class=recon>English:</div><div class=l2add>Hi! How can I help you today?</div><div class=recon>Czech:</div><div class=l2add>Dobrý den! Jak vám mohu dnes pomoci?</div><div class=recon>Everything else &mdash; task, tools, policy body, database, seed &mdash; is identical between the two columns.</div></div></details><details class=brief><summary>Agent policy (system prompt)<span class='who agent'>agent only</span></summary><div class=bbody><div class=doc># Airline Agent Policy
+
+The current time is 2024-05-15 15:00:00 EST.
+
+As an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**.
+
+Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed.
+
+You should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments.
+
+You should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time.
+
+You should deny user requests that are against this policy.
+
+You should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message &#x27;YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.&#x27; to the user.
+
+## Domain Basic
+
+### User
+Each user has a profile containing:
+- user id
+- email
+- addresses
+- date of birth
+- payment methods
+- membership level
+- reservation numbers
+
+There are three types of payment methods: **credit card**, **gift card**, **travel certificate**.
+
+There are three membership levels: **regular**, **silver**, **gold**.
+
+### Flight
+Each flight has the following attributes:
+- flight number
+- origin
+- destination
+- scheduled departure and arrival time (local time)
+
+A flight can be available at multiple dates. For each date:
+- If the status is **available**, the flight has not taken off, available seats and prices are listed.
+- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked.
+- If the status is **flying**, the flight has taken off but not landed, cannot be booked.
+
+There are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**.
+
+Seat availability and prices are listed for each cabin class.
+
+### Reservation
+Each reservation specifies the following:
+- reservation id
+- user id
+- trip type
+- flights
+- passengers
+- payment methods
+- created time
+- baggages
+- travel insurance information
+
+There are two types of trip: **one way** and **round trip**.
+
+## Book flight
+
+The agent must first obtain the user id from the user. 
+
+The agent should then ask for the trip type, origin, destination.
+
+Cabin:
+- Cabin class must be the same across all the flights in a reservation. 
+
+Passengers: 
+- Each reservation can have at most five passengers. 
+- The agent needs to collect the first name, last name, and date of birth for each passenger. 
+- All passengers must fly the same flights in the same cabin.
+
+Payment: 
+- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. 
+- The remaining amount of a travel certificate is not refundable. 
+- All payment methods must already be in user profile for safety reasons.
+
+Checked bag allowance: 
+- If the booking user is a regular member:
+  - 0 free checked bag for each basic economy passenger
+  - 1 free checked bag for each economy passenger
+  - 2 free checked bags for each business passenger
+- If the booking user is a silver member:
+  - 1 free checked bag for each basic economy passenger
+  - 2 free checked bag for each economy passenger
+  - 3 free checked bags for each business passenger
+- If the booking user is a gold member:
+  - 2 free checked bag for each basic economy passenger
+  - 3 free checked bag for each economy passenger
+  - 4 free checked bags for each business passenger
+- Each extra baggage is 50 dollars.
+
+Do not add checked bags that the user does not need.
+
+Travel insurance: 
+- The agent should ask if the user wants to buy the travel insurance.
+- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons.
+
+## Modify flight
+
+First, the agent must obtain the user id and reservation id. 
+- The user must provide their user id. 
+- If the user doesn&#x27;t know their reservation id, the agent should help locate it using available tools.
+
+Change flights: 
+- Basic economy flights cannot be modified.
+- Other reservations can be modified without changing the origin, destination, and trip type.
+- Some flight segments can be kept, but their prices will not be updated based on the current price.
+- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!
+
+Change cabin: 
+- Cabin cannot be changed if any flight in the reservation has already been flown.
+- In other cases, all reservations, including basic economy, can change cabin without changing the flights.
+- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible.
+- If the price after cabin change is higher than the original price, the user is required to pay for the difference.
+- If the price after cabin change is lower than the original price, the user is should be refunded the difference.
+
+Change baggage and insurance: 
+- The user can add but not remove checked bags.
+- The user cannot add insurance after initial booking.
+
+Change passengers:
+- The user can modify passengers but cannot modify the number of passengers.
+- Even a human agent cannot modify the number of passengers.
+
+Payment: 
+- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons.
+
+## Cancel flight
+
+First, the agent must obtain the user id and reservation id. 
+- The user must provide their user id. 
+- If the user doesn&#x27;t know their reservation id, the agent should help locate it using available tools.
+
+The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)
+
+If any portion of the flight has already been flown, the agent cannot help and transfer is needed.
+
+Otherwise, flight can be cancelled if any of the following is true:
+- The booking was made within the last 24 hrs
+- The flight is cancelled by airline
+- It is a business flight
+- The user has travel insurance and the reason for cancellation is covered by insurance.
+
+The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!
+
+Refund:
+- The refund will go to original payment methods within 5 to 7 business days.
+
+## Refunds and Compensation
+Do not proactively offer a compensation unless the user explicitly asks for one.
+
+Do not compensate if the user is regular member and has no travel insurance and flies (basic) economy.
+
+Always confirms the facts before offering compensation.
+
+Only compensate if the user is a silver/gold member or has travel insurance or flies business.
+
+- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers.
+
+- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers.
+
+Do not offer compensation for any other reason than the ones listed above.</div></div></details><details class=brief><summary>User-simulator guidelines<span class='who user'>user simulator only</span></summary><div class=bbody><div class=doc># User Simulation Guidelines
+You are playing the role of a customer contacting a customer service representative. 
+Your goal is to simulate realistic customer interactions while following specific scenario instructions.
+
+## Core Principles
+- Generate one message at a time, maintaining natural conversation flow.
+- Strictly follow the scenario instructions you have received.
+- Never make up or hallucinate information not provided in the scenario instructions. Information that is not provided in the scenario instructions should be considered unknown or unavailable.
+- Avoid repeating the exact instructions verbatim. Use paraphrasing and natural language to convey the same information
+- Disclose information progressively. Wait for the agent to ask for specific information before providing it.
+
+## Task Completion
+- The goal is to continue the conversation until the task is complete.
+- If the instruction goal is satisified, generate the &#x27;###STOP###&#x27; token to end the conversation.
+- If you are transferred to another agent, generate the &#x27;###TRANSFER###&#x27; token to indicate the transfer.
+- If you find yourself in a situation in which the scenario does not provide enough information for you to continue the conversation, generate the &#x27;###OUT-OF-SCOPE###&#x27; token to end the conversation.
+Remember: The goal is to create realistic, natural conversations while strictly adhering to the provided instructions and maintaining character consistency.
+</div><div class=recon>prepended to the customer brief by <code>--lang-components user_system</code>. Reconstructed from <code>seatau.translation.language</code>: unlike the agent policy, this text is not recorded in results.json.</div><div class=l2add>You must converse with the agent entirely in Czech (čeština). Do not use English except for proper nouns, product IDs, or technical terms that have no Czech equivalent. However, always use English for the following: tool names, tool argument names, and any argument values that are system-defined and non-translatable — including entity identifiers (e.g., IDs, reference codes, alphanumeric keys), enumerated constants (e.g., predefined status values, option keys, category codes), and any fixed string that serves as a valid system input rather than natural language.</div></div></details><details class=brief><summary>How this was graded<span class='who none'>neither party</span></summary><div class=bbody><div class=field><div class=k>what this task probes</div><div class=v>User wants to make many changes but at the end finds it all too expensive.</div></div><div class=field><div class=k>judged by the NL-assertion judge</div><ul class=crit><li>Agent should not make any changes.</li></ul></div><div class=field><div class=k>reward basis</div><div class=v>DB, COMMUNICATE</div></div></div></details><div class=cols><div class=col><h3>English</h3><div class=sub>reward <b>1.00</b> &middot; DB 1.00 &middot; COMMUNICATE 1.00 &middot; language 1.00 (7/7 turns in en) &middot; 2100s &middot; user_stop</div><div class='msg assistant'><div class=role>agent</div>Hi! How can I help you today?</div><div class='msg user'><div class=role>user</div>Hi! I&#x27;m Yara Garcia, and I need to make some changes to my reservation HXDUBJ. I&#x27;d like to change my upcoming outgoing flight to a nonstop flight that leaves the next day instead.</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; get_reservation_details({&quot;reservation_id&quot;: &quot;HXDUBJ&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;reservation_id&quot;: &quot;HXDUBJ&quot;, &quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;flight_type&quot;: &quot;round_trip&quot;, &quot;cabin&quot;: &quot;economy&quot;, &quot;flights&quot;: [{&quot;flight_number&quot;: &quot;HAT085&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;JFK&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 177}, {&quot;flight_number&quot;: &quot;HAT023&quot;, &quot;origin&quot;: &quot;JFK&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 146}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;date&quot;: &quot;2024-05-22&quot;, &quot;price&quot;: 180}], &quot;passengers&quot;: [{&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;}], &quot;payment_history&quot;: [{&quot;payment_id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 533}], &quot;created_at&quot;: &quot;2024-05-04T06:04:48&quot;, &quot;total_baggages&quot;: 0, &quot;nonfree_baggages&quot;: 0, &quot;insurance&quot;: &quot;yes&quot;, &quot;status&quot;: null}</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; search_direct_flight({&quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;date&quot;: &quot;2024-05-19&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT072&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;09:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;13:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 18, &quot;economy&quot;: 9, &quot;business&quot;: 9}, &quot;prices&quot;: {&quot;basic_economy&quot;: 68, &quot;economy&quot;: 130, &quot;business&quot;: 282}}, {&quot;flight_number&quot;: &quot;HAT180&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;07:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;11:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 4, &quot;economy&quot;: 17, &quot;business&quot;: 15}, &quot;prices&quot;: {&quot;basic_economy&quot;: 65, &quot;economy&quot;: 130, &quot;business&quot;: 346}}]</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; get_user_details({&quot;user_id&quot;: &quot;yara_garcia_1905&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;name&quot;: {&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;}, &quot;address&quot;: {&quot;address1&quot;: &quot;377 Pine Lane&quot;, &quot;address2&quot;: &quot;Suite 694&quot;, &quot;city&quot;: &quot;Denver&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;CO&quot;, &quot;zip&quot;: &quot;80212&quot;}, &quot;email&quot;: &quot;yara.garcia6882@example.com&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;, &quot;payment_methods&quot;: {&quot;certificate_2345996&quot;: {&quot;source&quot;: &quot;certificate&quot;, &quot;id&quot;: &quot;certificate_2345996&quot;, &quot;amount&quot;: 150.0}, &quot;gift_card_6941833&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 152.0}, &quot;gift_card_1646646&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_1646646&quot;, &quot;amount&quot;: 200.0}}, &quot;saved_passengers&quot;: [{&quot;first_name&quot;: &quot;James&quot;, &quot;last_name&quot;: &quot;Khan&quot;, &quot;dob&quot;: &quot;1959-08-18&quot;}], &quot;membership&quot;: &quot;gold&quot;, &quot;reservations&quot;: [&quot;HXDUBJ&quot;, &quot;DXG8T6&quot;, &quot;46BBSE&quot;, &quot;P9VXUO&quot;]}</div><div class='msg assistant'><div class=role>agent</div>
+
+Here are the available nonstop flights from IAH to SFO on May 19, 2024:
+- **Flight HAT072**: Departs 09:00, Arrives 13:00, Economy price: $130
+- **Flight HAT180**: Departs 07:00, Arrives 11:00, Economy price: $130
+
+Your return flight (HAT278 on May 22) will remain unchanged. Since the new direct flight is cheaper than your current connecting flights, you will receive a refund for the price difference.
+
+Which flight would you prefer? Also, please specify which gift card from your profile you&#x27;d like to use for processing the refund (`gift_card_6941833` or `gift_card_1646646`). Once you confirm your choice, I will proceed with the update.</div><div class='msg user'><div class=role>user</div>Thanks for finding those! I&#x27;d prefer Flight HAT072 departing at 09:00 — the 7am flight is too early for me, I only want flights departing after 8am.
+
+For the refund, you can use gift_card_6941833.
+
+Also, I actually need a few more changes to this reservation:
+1. I want to move my return flight from SFO back by one day as well
+2. I&#x27;d like to upgrade my ticket to business class
+3. I need to add 2 checked bags
+
+Could you help me with those too?</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; search_direct_flight({&quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;date&quot;: &quot;2024-05-21&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT082&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;23:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;03:00:00+1&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 18, &quot;economy&quot;: 13, &quot;business&quot;: 1}, &quot;prices&quot;: {&quot;basic_economy&quot;: 68, &quot;economy&quot;: 192, &quot;business&quot;: 470}}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;16:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;20:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 18, &quot;economy&quot;: 8, &quot;business&quot;: 12}, &quot;prices&quot;: {&quot;basic_economy&quot;: 66, &quot;economy&quot;: 174, &quot;business&quot;: 257}}]</div><div class='msg assistant'><div class=role>agent</div>
+
+Here is a summary of the requested changes to your reservation HXDUBJ:
+
+- **Outbound Flight**: Changed to HAT072 on May 19, 2024 (IAH to SFO, direct, departs 09:00)
+- **Return Flight**: Changed to HAT278 on May 21, 2024 (SFO to IAH, direct, departs 16:00)
+- **Cabin Class**: Upgraded from Economy to Business
+- **Baggage**: Added 2 checked bags (As a Gold member, you receive 4 free checked bags in Business class, so there will be no extra charge for these bags)
+- **Payment Method**: `gift_card_6941833` will be used for any price adjustments or refunds.
+
+Please confirm with a **yes** if you would like me to proceed with these changes.</div><div class='msg user'><div class=role>user</div>Wait, before I confirm — I think there might be a misunderstanding on the return flight. My current return is on May 22, and I wanted to move it **back** by one day, meaning I&#x27;d like to return on **May 23**, not May 21. Could you fix that?
+
+Also, could you tell me the total cost for all these changes before I confirm? I want to make sure everything fits within my budget.</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; search_direct_flight({&quot;date&quot;: &quot;2024-05-23&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;origin&quot;: &quot;SFO&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT082&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;23:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;03:00:00+1&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 19, &quot;economy&quot;: 9, &quot;business&quot;: 2}, &quot;prices&quot;: {&quot;basic_economy&quot;: 92, &quot;economy&quot;: 164, &quot;business&quot;: 323}}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;16:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;20:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 13, &quot;economy&quot;: 5, &quot;business&quot;: 3}, &quot;prices&quot;: {&quot;basic_economy&quot;: 67, &quot;economy&quot;: 187, &quot;business&quot;: 443}}]</div><div class='msg assistant'><div class=role>agent</div>
+
+Here is the updated summary and cost breakdown for your requested changes:
+
+- **Outbound Flight**: HAT072 on May 19, 2024 (IAH to SFO, departs 09:00)
+- **Return Flight**: HAT278 on May 23, 2024 (SFO to IAH, departs 16:00)
+- **Cabin Class**: Upgraded to Business for both flights
+- **Baggage**: 2 checked bags added (No extra charge, as your Gold membership includes 4 free checked bags in Business class)
+- **Payment Method**: `gift_card_6941833`
+
+**Cost Estimate**:
+- Original flight cost: $503
+- New flight cost (Business class): $725
+- **Additional charge for flights &amp; cabin**: $222
+- Baggage fee: $0
+- **Total additional cost**: $222
+
+*(Note: Your selected gift card `gift_card_6941833` currently shows a balance of $152. If the charge exceeds the available balance, the system may prompt for an additional payment method during processing.)*
+
+Please confirm with a **yes** if you would like me to proceed with these changes.</div><div class='msg user'><div class=role>user</div>Hold on — $222 in charges? I have travel insurance on this reservation, and I read on your website that change fees should be waived when you have insurance. I&#x27;d like you to honor that policy and waive these charges.</div><div class='msg assistant'><div class=role>agent</div>
+
+According to our policy, travel insurance enables a full refund if you need to cancel the flight given health or weather reasons. It does not waive charges for flight modifications or cabin upgrades. Per policy, if the price after a cabin change or flight modification is higher than the original price, the user is required to pay the difference.
+
+The additional charge for your requested changes remains $222. Please confirm with a **yes** if you would like me to proceed with these changes and the associated charge, or let me know if you would prefer to adjust your request.</div><div class='msg user'><div class=role>user</div>I understand that&#x27;s what you&#x27;re saying, but I specifically read on your website that insurance covers waiving fees for changes like this. I purchased the insurance precisely so I wouldn&#x27;t have to pay extra when my plans changed. Could you please check with a supervisor or look into this further? I&#x27;d really like the policy honored.
+
+That said, even setting the insurance aside — $222 is over my budget. I had planned for these changes to cost no more than $200 total. Is there any way to bring that down?</div><div class='msg assistant'><div class=role>agent</div>
+
+According to the policy, travel insurance enables a full refund only if you need to cancel the flight due to health or weather reasons. It does not waive fees for flight modifications or cabin upgrades. Per policy, any price difference resulting from flight or cabin changes must be paid by the user, and I do not have the ability to waive these charges or adjust flight prices.
+
+To stay within your $200 budget, you could choose to keep the economy cabin instead of upgrading to business. In that case, the new flight cost would be $317, which is lower than your original $503, resulting in a refund of $186 to your gift card.
+
+Please let me know how you would like to proceed:
+1. Proceed with the business class upgrade and the $222 charge.
+2. Keep the economy cabin to receive a refund instead.
+3. Be transferred to a human agent regarding the insurance fee waiver request.
+
+I await your confirmation.</div><div class='msg user'><div class=role>user</div>I appreciate you laying out the options, but none of these work for me. I specifically wanted the business class upgrade as part of this change — keeping economy isn&#x27;t something I&#x27;m willing to accept. And even if the insurance waived some fees, you&#x27;ve clarified the $222 is a fare difference, which means it would still be over the $200 I budgeted for this.
+
+Since I can&#x27;t get the full package I wanted within my budget, I&#x27;d like to cancel this entire request. Please leave my reservation HXDUBJ exactly as it was — no changes to the flights, cabin, or bags.</div><div class='msg assistant'><div class=role>agent</div>
+
+Understood. I will not make any changes to your reservation HXDUBJ. It will remain exactly as it was with your original flights, economy cabin, and current baggage allowance. 
+
+Is there anything else I can assist you with today?</div><div class='msg user'><div class=role>user</div>No, that&#x27;s all I needed. Thank you for confirming that my reservation stays unchanged. Goodbye!
+
+###STOP###</div></div><div class=col><h3>Czech</h3><div class=sub>reward <b>1.00</b> &middot; DB 1.00 &middot; COMMUNICATE 1.00 &middot; language 1.00 (6/6 turns in cs) &middot; 1237s &middot; user_stop</div><div class=sub>Czech language judge: <span class='sev MAJOR'>1 major</span> <span class='sev MINOR'>3 minor</span></div><div class='msg assistant'><div class=role>agent</div>Dobrý den! Jak vám mohu dnes pomoci?</div><div class='msg user'><div class=role>user</div>Dobrý den! Jmenuji se Yara Garcia a ráda bych změnila svou rezervaci HXDUBJ. Potřebuji upravit jak odletový, tak zpáteční let.</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; get_reservation_details({&quot;reservation_id&quot;: &quot;HXDUBJ&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;reservation_id&quot;: &quot;HXDUBJ&quot;, &quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;flight_type&quot;: &quot;round_trip&quot;, &quot;cabin&quot;: &quot;economy&quot;, &quot;flights&quot;: [{&quot;flight_number&quot;: &quot;HAT085&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;JFK&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 177}, {&quot;flight_number&quot;: &quot;HAT023&quot;, &quot;origin&quot;: &quot;JFK&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;date&quot;: &quot;2024-05-18&quot;, &quot;price&quot;: 146}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;date&quot;: &quot;2024-05-22&quot;, &quot;price&quot;: 180}], &quot;passengers&quot;: [{&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;}], &quot;payment_history&quot;: [{&quot;payment_id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 533}], &quot;created_at&quot;: &quot;2024-05-04T06:04:48&quot;, &quot;total_baggages&quot;: 0, &quot;nonfree_baggages&quot;: 0, &quot;insurance&quot;: &quot;yes&quot;, &quot;status&quot;: null}</div><div class='msg assistant'><div class=role>agent</div>
+
+Pro úpravu letů potřebuji znát nové datum odletu z IAH do SFO a datum návratu ze SFO do IAH. Prosím, uveďte tato data. Pamatujte, že město odletu a destinace musí zůstat stejná.</div><div class='msg user'><div class=role>user</div>Ráda bych oba lety posunula o jeden den. Tedy odlet z IAH do SFO chci přesunout na následující den – a ideálně přímým letem – a stejně tak zpáteční let ze SFO do IAH chci posunout o den později. Přesná data své rezervace teď bohužel nemám po ruce, ale měli byste je vidět v systému pod rezervací HXDUBJ.</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; search_direct_flight({&quot;date&quot;: &quot;2024-05-19&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;origin&quot;: &quot;IAH&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT072&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;09:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;13:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 18, &quot;economy&quot;: 9, &quot;business&quot;: 9}, &quot;prices&quot;: {&quot;basic_economy&quot;: 68, &quot;economy&quot;: 130, &quot;business&quot;: 282}}, {&quot;flight_number&quot;: &quot;HAT180&quot;, &quot;origin&quot;: &quot;IAH&quot;, &quot;destination&quot;: &quot;SFO&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;07:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;11:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 4, &quot;economy&quot;: 17, &quot;business&quot;: 15}, &quot;prices&quot;: {&quot;basic_economy&quot;: 65, &quot;economy&quot;: 130, &quot;business&quot;: 346}}]</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; search_direct_flight({&quot;date&quot;: &quot;2024-05-23&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;origin&quot;: &quot;SFO&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>[{&quot;flight_number&quot;: &quot;HAT082&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;23:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;03:00:00+1&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 19, &quot;economy&quot;: 9, &quot;business&quot;: 2}, &quot;prices&quot;: {&quot;basic_economy&quot;: 92, &quot;economy&quot;: 164, &quot;business&quot;: 323}}, {&quot;flight_number&quot;: &quot;HAT278&quot;, &quot;origin&quot;: &quot;SFO&quot;, &quot;destination&quot;: &quot;IAH&quot;, &quot;status&quot;: &quot;available&quot;, &quot;scheduled_departure_time_est&quot;: &quot;16:00:00&quot;, &quot;scheduled_arrival_time_est&quot;: &quot;20:00:00&quot;, &quot;date&quot;: null, &quot;available_seats&quot;: {&quot;basic_economy&quot;: 13, &quot;economy&quot;: 5, &quot;business&quot;: 3}, &quot;prices&quot;: {&quot;basic_economy&quot;: 67, &quot;economy&quot;: 187, &quot;business&quot;: 443}}]</div><div class='msg assistant'><div class=role>agent</div><div class=tc>&rarr; get_user_details({&quot;user_id&quot;: &quot;yara_garcia_1905&quot;})</div></div><div class='msg tool'><div class=role>tool result</div>{&quot;user_id&quot;: &quot;yara_garcia_1905&quot;, &quot;name&quot;: {&quot;first_name&quot;: &quot;Yara&quot;, &quot;last_name&quot;: &quot;Garcia&quot;}, &quot;address&quot;: {&quot;address1&quot;: &quot;377 Pine Lane&quot;, &quot;address2&quot;: &quot;Suite 694&quot;, &quot;city&quot;: &quot;Denver&quot;, &quot;country&quot;: &quot;USA&quot;, &quot;state&quot;: &quot;CO&quot;, &quot;zip&quot;: &quot;80212&quot;}, &quot;email&quot;: &quot;yara.garcia6882@example.com&quot;, &quot;dob&quot;: &quot;1974-08-15&quot;, &quot;payment_methods&quot;: {&quot;certificate_2345996&quot;: {&quot;source&quot;: &quot;certificate&quot;, &quot;id&quot;: &quot;certificate_2345996&quot;, &quot;amount&quot;: 150.0}, &quot;gift_card_6941833&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_6941833&quot;, &quot;amount&quot;: 152.0}, &quot;gift_card_1646646&quot;: {&quot;source&quot;: &quot;gift_card&quot;, &quot;id&quot;: &quot;gift_card_1646646&quot;, &quot;amount&quot;: 200.0}}, &quot;saved_passengers&quot;: [{&quot;first_name&quot;: &quot;James&quot;, &quot;last_name&quot;: &quot;Khan&quot;, &quot;dob&quot;: &quot;1959-08-18&quot;}], &quot;membership&quot;: &quot;gold&quot;, &quot;reservations&quot;: [&quot;HXDUBJ&quot;, &quot;DXG8T6&quot;, &quot;46BBSE&quot;, &quot;P9VXUO&quot;]}</div><div class='msg assistant'><div class=role>agent</div>
+
+Pro změnu vašich letů navrhuji následující přímé lety:
+- Odlet: HAT072 z IAH do SFO dne 2024-05-19, odlet 09:00, cena 130 USD
+- Návrat: HAT278 ze SFO do IAH dne 2024-05-23, odlet 16:00, cena 187 USD
+
+Celková cena nových letů je 317 USD. Původní cena letů byla 503 USD, takže vám bude refundováno 186 USD na vaši dárkovou kartu `gift_card_6941833`.
+
+Souhlasíte s touto změnou? (ano/ne)</div><div class='msg user'><div class=role>user</div>Děkuji, ty časy mi vyhovují – oba lety jsou po osmé ráno a před devátou večer, takže to je v pořádku. Než ale cokoli potvrdím, chtěla bych ještě dvě věci: ráda bych u obou letů přešla do business třídy a přidala 2 odbavené zavazadla. 
+
+Prosím, spočítejte mi všechno najednou jako jeden balíček – tedy přímý let o den později, posunutý návrat, business třída a 2 zavazadla – a sdělte mi celkovou cenu. Podle toho se rozhodnu.</div><div class='msg assistant'><div class=role>agent</div>
+
+Celková cena změny je <span class=hitwrap><mark id='a0' class='ann MAJOR'>222 USD k doplatění</mark><span class='tip MAJOR'><b>MAJOR</b>&quot;doplatění&quot; is not a Czech word. The noun derived from &quot;doplatit&quot; is &quot;doplacení&quot; (or &quot;doplatek&quot;). Correct: &quot;222 USD k doplacení&quot;.</span></span>.
+- Změna letů na přímé lety o den později (HAT072 a HAT278) a změna kabin z economy na business: rozdíl 222 USD.
+- Přidání 2 odbavených zavazadel: zdarma (<span class=hitwrap><mark id='a1' class='ann MINOR'>jako gold member máte 4 free bags pro business třídu</mark><span class='tip MINOR'><b>MINOR</b>English phrases (&quot;gold member&quot;, &quot;free bags&quot;) are mixed into an otherwise Czech sentence; these are not identifiers or codes. A native speaker would write e.g. &quot;jako zlatý člen máte v business třídě 4 zavazadla zdarma&quot;.</span></span>).
+
+Pro provedení změny potřebujete poskytnout platební metodu s dostatečným zůstatkem. Vaše aktuální platební metody mají zůstatky:
+- certificate_2345996: 150 USD
+- gift_card_6941833: 152 USD
+- gift_card_1646646: 200 USD
+
+Žádná z nich nemá 222 USD. Musíte přidat další platební metodu do svého profilu nebo použít jinou možnost.
+
+Souhlasíte s touto změnou a cenou 222 USD? (ano/ne)</div><div class='msg user'><div class=role>user</div>Moment – 222 USD je víc, než jsem ochotná zaplatit. A navíc: mám cestovní pojištění, takže by poplatky za změnu měly být podle podmínek na vašem webu prominuty. Četla jsem to tam jasně a trvám na tom, abyste tuto politiku dodrželi. Prosím, přepočítejte mi celý balíček s ohledem na mé pojištění – pokud se vejdu do 200 USD, všechno potvrdím.</div><div class='msg assistant'><div class=role>agent</div>
+
+Rozumím vašemu požadavku. Chtěl bych však upřesnit podmínky cestovního pojištění. Podle našich pravidel cestovní pojištění umožňuje plnou refundaci pouze v případě zrušení letu z důvodu zdravotních potíží nebo počasí. Nepokrývá však poplatky za změny letů ani cenové rozdíly při úpravě rezervace (včetně změny kabinové třídy). Při změně letů a kabin je tedy nutné uhradit rozdíl v ceně, který v tomto případě činí 222 USD. Odbavená zavazadla jsou pro vás <span class=hitwrap><mark id='a2' class='ann MINOR'>jako gold člena v business třídě</mark><span class='tip MINOR'><b>MINOR</b>The undeclined English adjective &quot;gold&quot; is attached to the declined Czech noun &quot;člena&quot;, which is unnatural. A native speaker would write &quot;jako zlatého člena&quot; or &quot;jako člena se statutem Gold&quot;.</span></span> zdarma.
+
+Pokud si přejete změnu provést, bude nutné uhradit částku 222 USD. Pokud vám tato částka nevyhovuje, mohu vám nabídnout jinou možnost nebo vám pomoci s jinou úpravou. Jak byste si přála postupovat?</div><div class='msg user'><div class=role>user</div>To je škoda, na webu jsem to ale chápala jinak a myslela jsem, že se pojištění vztahuje i na změny. I kdybych to ale nechala být – 222 USD je prostě nad můj rozpočet 200 USD, a o žádné částečné změny ani nižší třídu nestojím. Buď ten kompletní balíček do 200 USD, nebo nic.
+
+Vzhledem k tomu, že to nejde, celou svou žádost o změnu ruším – rezervaci HXDUBJ nechte prosím tak, jak je, beze změn.</div><div class='msg assistant'><div class=role>agent</div>
+
+<span class=hitwrap><mark id='a3' class='ann MINOR'>Rozumím, vaše žádost o změnu rezervace HXDUBJ je stornována.</mark><span class='tip MINOR'><b>MINOR</b>Comma splice: two independent clauses are joined only by a comma. A native writer would use a period or a dash: &quot;Rozumím. Vaše žádost o změnu rezervace HXDUBJ je stornována.&quot;</span></span> Rezervace zůstane v původním znění bez jakýchkoliv úprav. Pokud byste v budoucnu potřebovala jakoukoli další pomoc, neváhejte se ozvat. Přeji vám příjemný zbytek dne!</div><div class='msg user'><div class=role>user</div>Děkuji za potvrzení. Nashledanou!
+
+###STOP###</div></div></div><div class=note>Same task, same tools, same policy, same database &mdash; the only difference is the conversation language. Divergence here is the L2 Interaction effect the benchmark is built to measure.</div><script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-theme-toggle]');if(!b)return;var d=document.documentElement,n=d.getAttribute('data-theme')==='dark'?'light':'dark';if(n==='dark')d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('theme',n);}catch(err){}});</script></body></html>

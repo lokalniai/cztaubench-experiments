@@ -1,0 +1,353 @@
+
+/* lokalni.AI house style: Monokai Vivid, Barlow for text, JetBrains Mono for
+   anything that is literally code or a number.
+
+   Theming follows the site's mechanism -- `data-theme` on <html>, an explicit
+   choice persisted in localStorage, NOT `prefers-color-scheme` -- but inverts
+   its default: the site is dark-first, this viewer is light-first, because it is
+   read as a document in daylight rather than browsed as a landing page.
+
+   The neon accents cannot cross over. Monokai's cyan/green/purple/orange are
+   tuned for dark terminal chrome and fail contrast as text on a light page
+   (DESIGN.md is explicit about this), so each one has a darkened light-theme
+   counterpart in the same hue family, all measured >=4.5:1 on both --bg and
+   --surface. Accent use stays narrow: cyan/teal is interactive and the agent,
+   purple is the Czech side, red marks what is wrong. */
+:root{
+/* Light (default). --link is NOT the brand's --accent-crimson (#869a12): that
+   token measures 2.88:1 on #f4f5f0 and fails AA at any size, which DESIGN.md
+   itself flags as a known issue. This is its suggested replacement, #5c6b0c at
+   5.4:1 -- same olive, dark enough to read at table sizes. */
+--bg:#f4f5f0;--fg:#1f211c;--muted:#585a54;--line:#d5d7d2;--card:#eceee9;
+--link:#5c6b0c;
+--agent:#0e6e7a;--user:#8b3fa8;--tool:#8a5a00;
+--bad:#c2003f;--good:#5c6b0c;--emph:#5c6b0c;
+--maj-line:#c2003f;--maj-bg:rgba(194,0,63,.15);
+--min-line:#8a5a00;--min-bg:rgba(138,90,0,.14);
+--track:rgba(31,33,28,.09);
+--sans:'Barlow',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+--cond:'Barlow Condensed','Barlow Semi Condensed',var(--sans);
+--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+:root[data-theme='dark']{
+--bg:#1f211c;--fg:#f8f8f2;--muted:#c2b889;--line:#3e3d32;--card:#252820;
+--link:#dcff00;
+--agent:#41ffff;--user:#f082ff;--tool:#ffb800;
+--bad:#ff005e;--good:#dcff00;--emph:#dcff00;
+--maj-line:#ff005e;--maj-bg:rgba(255,0,94,.24);
+--min-line:#ffb800;--min-bg:rgba(255,184,0,.16);
+--track:rgba(248,248,242,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;padding:1.4rem clamp(1rem,4vw,3rem) 3rem;background:var(--bg);
+color:var(--fg);font:15px/1.65 var(--sans);
+-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+h1{font-family:var(--cond);font-weight:700;font-size:2rem;line-height:1.1;
+letter-spacing:-.02em;margin:0 0 .3rem;text-wrap:balance}
+h2{font-family:var(--cond);font-weight:600;font-size:1.3rem;letter-spacing:-.01em;
+margin:1.6rem 0 .5rem;text-transform:lowercase}
+.sub{color:var(--muted);margin-bottom:1.2rem}
+
+/* ── masthead ────────────────────────────────────────────────────────────── */
+/* The logomark reads two ways at once: a terminal window (rule under the title
+   bar) and a railway wagon (wheels below the frame). Line art on a grid, drawn
+   inline so it inherits colour and needs no asset pipeline. */
+.mast{display:flex;align-items:center;gap:.7rem;padding-bottom:.9rem;
+margin-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.brand{display:block;line-height:0}
+.brand img{height:2rem;width:auto;display:block}
+/* Two files, not one filtered image: the wordmark is a raster asset and the
+   site ships a light-on-dark and a dark-on-light cut of it. Both are always in
+   the DOM and the theme picks one, so switching cannot flash a missing image. */
+:root .logo-dark{display:none}
+:root[data-theme='dark'] .logo-light{display:none}
+:root[data-theme='dark'] .logo-dark{display:block}
+.mastsep{color:var(--line)}
+.spacer{flex:1}
+/* Icon only, and square: the label said nothing the sun/moon did not, and a
+   text button next to a sentence-length title read as a second heading. */
+.tgl{display:flex;align-items:center;justify-content:center;flex:none;
+width:1.9rem;height:1.9rem;border:1px solid var(--line);background:var(--card);
+color:var(--muted);border-radius:4px;cursor:pointer;padding:0}
+.tgl:hover{color:var(--fg);border-color:var(--muted)}
+.tgl svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;
+stroke-linecap:round;stroke-linejoin:round}
+:root .tgl .moon{display:none}
+:root[data-theme='dark'] .tgl .sun{display:none}
+:root[data-theme='dark'] .tgl .moon{display:block}
+/* Not uppercased and not letter-spaced, unlike the other Condensed labels: this
+   is a sentence-length Czech title, and uppercase tracking at that length turns
+   a masthead into a banner and drops the diacritics into the row above. */
+.proj{color:var(--muted);font-family:var(--cond);font-weight:600;
+font-size:1.15rem;letter-spacing:0;text-wrap:balance}
+.proj:hover{color:var(--fg);text-decoration:none}
+
+/* ── tabs ────────────────────────────────────────────────────────────────── */
+/* Centred, underlined, sized like navigation rather than like a control. The
+   active rule is accent-red and sits ON the shared bottom border, so the two
+   read as one object instead of a tab floating above a line. */
+.tabs{display:flex;justify-content:center;gap:clamp(1.4rem,5vw,3.5rem);
+border-bottom:1px solid var(--line);margin:0 0 2rem}
+.tabs a{position:relative;padding:.5rem .3rem .8rem;color:var(--muted);
+font-family:var(--cond);font-weight:600;font-size:1.25rem;
+text-transform:uppercase;letter-spacing:.07em}
+.tabs a:hover{color:var(--fg);text-decoration:none}
+.tabs a.on{color:var(--fg)}
+.tabs a.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;
+height:3px;background:var(--bad)}
+table{border-collapse:collapse;width:100%;margin-bottom:1rem;font-size:.92rem}
+th,td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--line);
+white-space:nowrap}
+th{color:var(--muted);font-family:var(--cond);font-weight:600;font-size:.9rem;
+text-transform:uppercase;letter-spacing:.06em}
+tr:hover td{background:var(--card)}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);
+font-size:.85rem}
+.pill{display:inline-block;padding:.05rem .45rem;border-radius:10px;font-size:.78rem;
+border:1px solid var(--line);font-family:var(--mono)}
+.ok{color:var(--good);border-color:var(--good)}
+.no{color:var(--bad);border-color:var(--bad)}
+.msg{border-left:3px solid var(--line);padding:.5rem .8rem;margin:.55rem 0;
+background:var(--card);border-radius:0 6px 6px 0;white-space:pre-wrap;
+overflow-wrap:anywhere}
+.msg.assistant{border-left-color:var(--agent)}
+.msg.user{border-left-color:var(--user)}
+.msg.tool{border-left-color:var(--tool);font-family:var(--mono);
+font-size:.85rem}
+.role{font-family:var(--cond);font-size:.85rem;text-transform:uppercase;
+letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem}
+.msg.assistant .role{color:var(--agent)}.msg.user .role{color:var(--user)}
+.msg.tool .role{color:var(--tool)}
+.flag{outline:2px solid var(--bad);outline-offset:2px}
+.tc{font-family:var(--mono);font-size:.84rem;color:var(--tool);
+margin-top:.4rem;padding-left:.6rem;border-left:2px dotted var(--tool)}
+details{margin:.3rem 0}summary{cursor:pointer;color:var(--muted);font-size:.85rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:900px){.cols{grid-template-columns:1fr}}
+.col h3{margin:.2rem 0 .5rem;font-family:var(--cond);font-size:1.15rem;
+text-transform:uppercase;letter-spacing:.06em}
+.wrap{overflow-x:auto}
+.note{color:var(--muted);font-size:.85rem;margin-top:1.4rem;
+border-top:1px solid var(--line);padding-top:.7rem;max-width:78ch;
+text-wrap:pretty}
+code{background:var(--bg);border:1px solid var(--line);padding:.02rem .3rem;
+border-radius:3px;font-family:var(--mono);font-size:.86em;color:var(--tool)}
+
+/* ── leaderboard ─────────────────────────────────────────────────────────── */
+.chart{margin:.2rem 0 1.1rem}
+.crow{display:grid;grid-template-columns:minmax(9rem,15rem) 1fr;gap:.9rem;
+align-items:center;padding:.42rem 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}
+.cname{font-size:.88rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cname .org{color:var(--muted);font-size:.76rem}
+.bars{display:flex;flex-direction:column;gap:3px;min-width:0}
+/* The track is the 0..1 axis; every bar is a percentage of it, so EN and CS
+   bars in different rows stay comparable by eye. */
+.track{position:relative;height:15px;background:var(--track);border-radius:2px}
+.bar{position:absolute;left:0;top:0;height:100%;border-radius:3px}
+.bar.en{background:var(--agent)}
+.bar.cs{background:var(--user)}
+.bar.ref{background:var(--muted);opacity:.55}
+/* The gap is drawn as its own span starting where CS ends and finishing where
+   EN ends -- the point of the page is that distance, so it gets ink rather
+   than being left as the difference between two bars the eye must subtract. */
+.gap{position:absolute;top:0;height:100%;border-radius:0 3px 3px 0;
+background:repeating-linear-gradient(135deg,var(--bad) 0 4px,transparent 4px 8px);
+border-right:2px solid var(--bad)}
+/* Values sit in their own column rather than floating at the bar tip: a bar at
+   88% would push its label off the end of the track, and a fixed column also
+   lets the numbers be read down the page independently of bar length. */
+.tag{font-family:var(--cond);font-size:.8rem;text-transform:uppercase;
+letter-spacing:.06em;color:var(--muted);width:1.6rem;flex:none;text-align:right}
+.brow{display:flex;align-items:center;gap:.45rem}
+.brow .track{flex:1;min-width:0}
+.val{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.76rem;
+flex:none;width:4.2rem;text-align:right;white-space:nowrap}
+.val .pt{color:var(--muted);font-size:.65rem}
+.dval{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.74rem;
+color:var(--bad);white-space:nowrap;flex:none;width:4.4rem}
+.dval.up{color:var(--good)}
+.legend{display:flex;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.8rem;
+margin:.1rem 0 .8rem}
+/* Airline and retail sit side by side: they are the same measurement on two
+   task sets, so the comparison a reader wants is across the pair, and stacking
+   them put a screen of scrolling between the two halves of one question. */
+.domcols{display:grid;grid-template-columns:1fr 1fr;gap:0 2.4rem;
+align-items:start}
+@media(max-width:1200px){.domcols{grid-template-columns:1fr}}
+.domcols .crow{grid-template-columns:minmax(5rem,8.5rem) 1fr;gap:.6rem}
+.domcols .val{width:3.5rem}.domcols .dval{width:3.8rem}
+.domcols .hd{margin-top:.2rem}
+.legend i{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;
+margin-right:.3rem;vertical-align:middle}
+.partial{opacity:.45}
+.hd{display:flex;align-items:baseline;gap:.6rem;margin:1.7rem 0 .3rem}
+.hd h2{margin:0}
+.hd .sub2{color:var(--muted);font-size:.82rem}
+.caveat{background:var(--card);border-left:3px solid var(--muted);
+padding:.55rem .8rem;border-radius:0 5px 5px 0;color:var(--muted);
+font-size:.83rem;margin:.5rem 0 1rem;text-wrap:pretty}
+/* A legend, not prose: every term/clause pair runs inline and the whole thing
+   reflows across the full page width. A one-per-line grid was correct
+   typography for a narrow measure and wrong here -- five short definitions in a
+   tall stack left most of the box empty and pushed the page down for nothing. */
+.leg{margin:0;display:block}
+.leg dt{display:inline;font-weight:600;color:var(--fg);white-space:nowrap}
+.leg dd{display:inline;margin:0}
+/* Separator before every pair but the first. Sits on the dt so it cannot be
+   orphaned onto a line of its own by the wrap. */
+.leg dt:not(:first-child)::before{content:"2";color:var(--line);
+margin:0 .5rem 0 .35rem;font-weight:400}
+
+/* ── briefing panels ─────────────────────────────────────────────────────── */
+/* The conversation alone is unreadable without the instructions behind it, but
+   those instructions are not all visible to the same party -- so each panel is
+   labelled with WHO SAW IT. Conflating the user simulator's brief with the
+   agent's policy is how a reader concludes the agent "should have known" a
+   fact it was never told. */
+.brief{border:1px solid var(--line);border-radius:6px;margin:.6rem 0 1rem;
+background:var(--card)}
+.brief>summary{padding:.5rem .8rem;font-size:.86rem;color:var(--fg);
+list-style:none;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.brief>summary::-webkit-details-marker{display:none}
+.brief>summary::before{content:"b8";color:var(--muted);font-size:.8rem}
+.brief[open]>summary::before{content:"be"}
+.brief>summary:hover{background:var(--bg)}
+.brief .who{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;
+border:1px solid var(--line);border-radius:9px;padding:.02rem .45rem;
+color:var(--muted);white-space:nowrap}
+.brief .who.agent{color:var(--agent);border-color:var(--agent)}
+.brief .who.user{color:var(--user);border-color:var(--user)}
+.brief .who.none{color:var(--bad);border-color:var(--bad)}
+.bbody{padding:.1rem .9rem .8rem;border-top:1px solid var(--line)}
+.field{margin:.7rem 0}
+.field>.k{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;
+color:var(--muted);margin-bottom:.15rem}
+.field>.v{white-space:pre-wrap;overflow-wrap:anywhere}
+.doc{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.87rem;
+max-height:26rem;overflow-y:auto;padding:.6rem .75rem;background:var(--bg);
+border:1px solid var(--line);border-radius:5px}
+/* The appended L2 component is the entire difference between an english cell
+   and its l2_interaction twin, so it is shown as its own block rather than
+   left for the reader to spot at the bottom of an 8 KB policy. */
+.l2add{border-left:3px solid var(--user);background:var(--bg);
+padding:.5rem .75rem;border-radius:0 5px 5px 0;white-space:pre-wrap;
+overflow-wrap:anywhere;font-size:.87rem;margin:.4rem 0}
+.recon{color:var(--muted);font-size:.78rem;margin:.35rem 0 .1rem}
+ul.crit{margin:.2rem 0;padding-left:1.1rem}
+ul.crit li{margin:.2rem 0}
+
+/* ── judge annotations ───────────────────────────────────────────────────── */
+/* Severity by hue, not by weight of one hue: MAJOR (would fail a grammar
+   checker) takes accent-red, MINOR (legal but unidiomatic) takes accent-orange.
+   Red/orange reads as error/warning without either wash being loud enough that
+   a page dense with MINORs looks like a page full of broken Czech. The washes
+   are translucent so the body text keeps its own colour and contrast. The four
+   tokens are defined per theme at the top of this sheet, not here. */
+mark.ann{padding:.02rem .12rem;border-radius:2px;border-bottom:2px solid;
+color:inherit;cursor:help;scroll-margin-top:2.5rem}
+mark.ann:target{outline:2px solid var(--fg);outline-offset:2px}
+mark.ann.MAJOR{background:var(--maj-bg);border-bottom-color:var(--maj-line)}
+mark.ann.MINOR{background:var(--min-bg);border-bottom-color:var(--min-line)}
+.sev{font-family:var(--cond);font-size:.8rem;text-transform:uppercase;
+letter-spacing:.06em;border-radius:9px;padding:.02rem .45rem;border:1px solid;
+white-space:nowrap}
+.sev.MAJOR{color:var(--maj-line);border-color:var(--maj-line)}
+.sev.MINOR{color:var(--min-line);border-color:var(--min-line)}
+.bar.maj{background:var(--maj-line)}
+.bar.min{background:var(--min-line)}
+
+/* The explanation popup. The reason a span was flagged is reference material,
+   not something to read down the page: shown inline it tripled the height of
+   every row and buried the Czech under English commentary, which is the wrong
+   thing to be scanning. Now the highlight is the content and the explanation
+   is one hover away.
+
+   Positioned BELOW the span: above would clip out of the viewport on the first
+   row of the list, which is exactly where a reader starts. pointer-events:none
+   keeps it from swallowing the click on the row link underneath. */
+.hitwrap{position:relative;display:inline}
+.tip{position:absolute;top:calc(100% + .45rem);left:0;z-index:30;
+width:max-content;max-width:min(34rem,70vw);white-space:normal;text-align:left;
+background:var(--card);border:1px solid var(--line);border-left:3px solid;
+border-radius:0 4px 4px 0;padding:.5rem .75rem;
+font:400 .86rem/1.5 var(--sans);color:var(--fg);
+box-shadow:0 8px 26px rgba(0,0,0,.55);
+opacity:0;visibility:hidden;transition:opacity .12s ease;pointer-events:none}
+.hitwrap:hover .tip,mark.ann:target+.tip{opacity:1;visibility:visible}
+.tip.MAJOR{border-left-color:var(--maj-line)}
+.tip.MINOR{border-left-color:var(--min-line)}
+.tip b{font-family:var(--cond);font-weight:600;text-transform:uppercase;
+letter-spacing:.06em;font-size:.82rem;display:block;margin-bottom:.15rem}
+.tip.MAJOR b{color:var(--maj-line)}.tip.MINOR b{color:var(--min-line)}
+
+/* Language-quality header: chart left, numbers right. Same data twice on
+   purpose -- the bars carry the ranking at a glance, the table carries the
+   counts you cannot read off a bar. */
+.lqtop{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+gap:1.4rem 2.2rem;align-items:start;margin-bottom:1.6rem}
+@media(max-width:1000px){.lqtop{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);border-radius:5px;padding:.9rem 1.1rem;
+background:var(--card)}
+.panel h2{margin:0 0 .6rem;font-size:1.15rem}
+.panel table{margin-bottom:0}
+.panel th,.panel td{padding:.3rem .45rem}
+/* One row per flagged span. The context is set dim so the eye lands on the
+   highlight first -- the row exists to be scanned, not read. */
+.arow{display:block;padding:.6rem .8rem;border-bottom:1px solid var(--line);
+color:inherit}
+.arow:hover{background:var(--card);text-decoration:none}
+.ameta{display:flex;gap:.5rem;align-items:baseline;flex-wrap:wrap;
+font-size:.78rem;color:var(--muted);margin-bottom:.25rem}
+.actx{overflow-wrap:anywhere;line-height:1.7}
+.actx .dim{color:var(--muted)}
+.unloc{font-size:.72rem;color:var(--muted);border:1px dashed var(--line);
+border-radius:9px;padding:.02rem .4rem}
+.filters{display:flex;gap:1.4rem;flex-wrap:wrap;align-items:baseline;
+margin:.2rem 0 1rem;font-size:.88rem;color:var(--muted)}
+
+/* ── trajectory picker ───────────────────────────────────────────────────── */
+/* This replaced the cell listing outright. The old table was a stop on the way
+   to a conversation; the chips are the same index rendered small enough to sit
+   permanently above the conversation itself, so moving between examples costs
+   one click and never a trip back to a list page. */
+.picker{border:1px solid var(--line);border-radius:5px;background:var(--card);
+padding:.55rem .7rem;margin-bottom:1.1rem}
+.pickhd{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;
+margin-bottom:.5rem}
+.pickcell{font-family:var(--cond);font-weight:600;font-size:1.05rem;
+text-transform:uppercase;letter-spacing:.05em}
+.sub2{color:var(--muted);font-size:.82rem}
+.nav{font-family:var(--cond);font-weight:600;font-size:.9rem;
+text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.nav.off{color:var(--line)}
+/* Capped and scrollable: a retail cell is 114 chips and an uncapped strip
+   pushed the conversation itself below the fold, which defeats the point. */
+.chips{display:flex;flex-wrap:wrap;gap:3px;max-height:7.2rem;overflow-y:auto}
+.chip{position:relative;min-width:2.1rem;padding:.12rem .35rem;text-align:center;
+border:1px solid var(--line);border-radius:3px;font-family:var(--mono);
+font-size:.72rem;color:var(--muted);background:var(--bg);line-height:1.4}
+.chip:hover{text-decoration:none;border-color:var(--muted);color:var(--fg)}
+/* Pass/fail rides the left edge rather than the whole chip: a wall of 114
+   saturated blocks is a texture, not information, and the eye needs the
+   current-chip fill to win against it. */
+.chip.ok{border-left:3px solid var(--good)}
+.chip.no{border-left:3px solid var(--bad)}
+.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg);
+font-weight:500}
+/* A judged-and-flagged marker, because "has the judge found anything here" is
+   the reason to open most of these and it was nowhere in the old table. */
+.chip .fl{position:absolute;top:-2px;right:-2px;width:6px;height:6px;
+border-radius:50%;border:1px solid var(--card)}
+.chip .fl.maj{background:var(--maj-line)}
+.chip .fl.min{background:var(--min-line)}
+
+/* ── static build only ───────────────────────────────────────────────────── */
+/* The annotations filter bar is buttons here, not links: there is no server to
+   re-render the page, so filtering hides rows in place. They are styled to read
+   as the links they replace. */
+.filters button{font:inherit;color:var(--link);background:none;border:0;
+padding:0;cursor:pointer}
+.filters button:hover{text-decoration:underline}
+.filters button.on{font-weight:700}
