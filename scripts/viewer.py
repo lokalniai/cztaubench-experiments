@@ -223,6 +223,18 @@ margin-right:.3rem;vertical-align:middle}
 .hd{display:flex;align-items:baseline;gap:.6rem;margin:1.7rem 0 .3rem}
 .hd h2{margin:0}
 .hd .sub2{color:var(--muted);font-size:.82rem}
+/* Same header row inside a panel, where the surrounding margins are already
+   set by the panel's padding. */
+.phd{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .6rem}
+.phd h2{margin:0}
+/* The SVG export button. Quiet by default -- it is a utility beside a heading,
+   not a call to action -- and pushed to the right so it does not sit between
+   the chart's title and its caption. */
+.dl{margin-left:auto;flex:none;font:600 .7rem/1.6 var(--cond);
+text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+background:none;border:1px solid var(--line);border-radius:3px;
+padding:.05rem .4rem;cursor:pointer;white-space:nowrap}
+.dl:hover{color:var(--fg);border-color:var(--muted)}
 .caveat{background:var(--card);border-left:3px solid var(--muted);
 padding:.55rem .8rem;border-radius:0 5px 5px 0;color:var(--muted);
 font-size:.83rem;margin:.5rem 0 1rem;text-wrap:pretty}
@@ -841,6 +853,8 @@ def ann_overview() -> str:
 
     err = (f" &middot; <span class='pill no'>{total['err']} judge errors</span>"
            if total["err"] else "")
+    dl = svg_download("lang-quality", "cztaubench-language-quality.svg",
+                      ann_svg(rows, top, total))
     return (
         f"<div class=sub>"
         f"<b>{total['maj'] + total['min']}</b> flagged spans over "
@@ -849,7 +863,8 @@ def ann_overview() -> str:
         f"{esc('' if meta.get('complete', True) else ' · run in progress')}"
         f"{err}</div>"
         "<div class=lqtop>"
-        "<div class=panel><h2>spans per conversation</h2>"
+        "<div class=panel>"
+        f"<div class=phd><h2>spans per conversation</h2>{dl}</div>"
         "<div class=legend style='margin:0 0 .4rem'>"
         "<span><i style='background:var(--maj-line)'></i>major</span>"
         "<span><i style='background:var(--min-line)'></i>minor</span></div>"
@@ -915,6 +930,239 @@ def bar_row(name: str, sub: str, series: list, note: str = "") -> str:
             f"{note}</div><div class=bars>{''.join(bars)}</div></div>")
 
 
+# ── SVG export ───────────────────────────────────────────────────────────────
+# The charts above are HTML boxes, which is the right thing for a page -- they
+# reflow, they carry links, they follow the theme -- and the wrong thing the
+# moment somebody wants one in a slide or a post. So each of the three overview
+# charts is rendered a second time as a standalone SVG and offered as a
+# download. There is no second reduction behind it: both renderers are handed
+# the same row list the view already built, so the file cannot disagree with the
+# picture it was exported from.
+#
+# The exported file is deliberately self-contained: literal colours (no CSS
+# variables, which vector editors do not resolve), a `prefers-color-scheme`
+# block so it still reads on a dark page, and font *stacks* rather than embedded
+# faces -- the chart is numbers and short labels, and it degrades to the
+# reader's sans without losing anything.
+
+SVG_STYLE = (
+    "text{font-family:'Barlow',-apple-system,'Segoe UI',Roboto,sans-serif;"
+    "fill:#1f211c}"
+    ".cond{font-family:'Barlow Condensed','Barlow Semi Condensed','Barlow',"
+    "sans-serif}"
+    ".mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}"
+    ".pg{fill:#f4f5f0}.mut{fill:#585a54}.sep{stroke:#d5d7d2;stroke-width:1}"
+    ".tk{fill:#1f211c;fill-opacity:.09}"
+    ".en{fill:#0e6e7a}.cs{fill:#8b3fa8}.ref{fill:#585a54;fill-opacity:.55}"
+    ".mj{fill:#c2003f}.mn{fill:#8a5a00}"
+    ".bad{fill:#c2003f}.good{fill:#5c6b0c}.gp{stroke:#c2003f}"
+    "@media(prefers-color-scheme:dark){"
+    "text{fill:#f8f8f2}.pg{fill:#1f211c}.mut{fill:#c2b889}"
+    ".sep{stroke:#3e3d32}.tk{fill:#f8f8f2;fill-opacity:.07}"
+    ".en{fill:#41ffff}.cs{fill:#f082ff}.ref{fill:#c2b889;fill-opacity:.55}"
+    ".mj{fill:#ff005e}.mn{fill:#ffb800}"
+    ".bad{fill:#ff005e}.good{fill:#dcff00}.gp{stroke:#ff005e}}"
+)
+
+# The hatch the EN->CS gap is filled with, the pattern equivalent of the page's
+# repeating-linear-gradient. Its stroke is a class, so it flips with the rest.
+SVG_HATCH = ("<defs><pattern id='hatch' width='8' height='8' "
+             "patternUnits='userSpaceOnUse' patternTransform='rotate(45)'>"
+             "<line class='gp' x1='2' y1='0' x2='2' y2='8' stroke-width='3'/>"
+             "</pattern></defs>")
+
+BAR_H = 15      # matches .track in the stylesheet, so the two read as one chart
+BAR_GAP = 4
+ROW_PAD = 7
+
+
+def sv_text(x: float, y: float, s, cls: str = "", size: float = 12.5,
+            anchor: str = "start", weight: str = "") -> str:
+    a = f" text-anchor='{anchor}'" if anchor != "start" else ""
+    w = f" font-weight='{weight}'" if weight else ""
+    c = f" class='{cls}'" if cls else ""
+    return (f"<text x='{x:.1f}' y='{y:.1f}'{c} font-size='{size:g}'{a}{w}>"
+            f"{esc(s)}</text>")
+
+
+def sv_rect(x: float, y: float, w: float, h: float, cls: str = "",
+            rx: float = 2, fill: str = "") -> str:
+    c = f" class='{cls}'" if cls else ""
+    f = f" fill='{fill}'" if fill else ""
+    return (f"<rect x='{x:.1f}' y='{y:.1f}' width='{max(w, 0):.1f}' "
+            f"height='{h:.1f}' rx='{rx:g}'{c}{f}/>")
+
+
+def sv_clip(s, n: int) -> str:
+    """Truncate a label to what fits its column. SVG has no text-overflow."""
+    s = str(s)
+    return s if len(s) <= n else s[:n - 1] + "…"
+
+
+def sv_legend(x: float, y: float, width: float, items: list) -> tuple[str, float]:
+    """A wrapping legend row. Returns (markup, height).
+
+    Item widths are estimated from character count rather than measured -- there
+    is no text metric without a font engine -- which is why the labels are kept
+    short and the row is allowed to wrap.
+    """
+    out, cx, cy = [], x, y
+    for cls, label, fill in items:
+        w = 13 + len(label) * 5.4 + 16
+        if cx > x and cx + w > x + width:
+            cx, cy = x, cy + 16
+        out.append(sv_rect(cx, cy, 9, 9, cls, rx=2, fill=fill))
+        out.append(sv_text(cx + 13, cy + 8.5, label, "mut", 10.5))
+        cx += w
+    return "".join(out), cy - y + 9
+
+
+def svg_doc(title: str, width: float, height: float, body: str) -> str:
+    return (f"<?xml version='1.0' encoding='UTF-8'?>"
+            f"<svg xmlns='http://www.w3.org/2000/svg' width='{width:.0f}' "
+            f"height='{height:.0f}' viewBox='0 0 {width:.0f} {height:.0f}'>"
+            f"<title>{esc(title)}</title><style>{SVG_STYLE}</style>{SVG_HATCH}"
+            f"{sv_rect(0, 0, width, height, 'pg', rx=0)}{body}</svg>")
+
+
+def svg_download(key: str, filename: str, svg: str) -> str:
+    """A button that hands the reader the SVG, plus the payload it downloads.
+
+    The file is carried in the page rather than written beside it: the static
+    build is 5,764 files already, and three more that only ever leave the site
+    through a click are better off inside the page that offers them. The click
+    handler is installed once however many buttons a page has -- three listeners
+    on the leaderboard would mean three downloads per click.
+    """
+    payload = json.dumps(svg).replace("</", "<\\/")
+    return (
+        f"<button class=dl type=button data-svg='{esc(key)}' "
+        f"title='Download this chart as SVG'>SVG &darr;</button>"
+        f"<script>(function(){{var S=window.BMSVG=window.BMSVG||{{}};"
+        f"S[{json.dumps(key)}]={{n:{json.dumps(filename)},s:{payload}}};"
+        f"if(window.BMSVGH)return;window.BMSVGH=1;"
+        f"document.addEventListener('click',function(e){{"
+        f"var b=e.target.closest&&e.target.closest('[data-svg]');if(!b)return;"
+        f"var it=window.BMSVG[b.getAttribute('data-svg')];if(!it)return;"
+        f"var u=URL.createObjectURL(new Blob([it.s],"
+        f"{{type:'image/svg+xml;charset=utf-8'}}));"
+        f"var a=document.createElement('a');a.href=u;a.download=it.n;"
+        f"document.body.appendChild(a);a.click();"
+        f"setTimeout(function(){{URL.revokeObjectURL(u);a.remove();}},0);"
+        f"}});}})();</script>")
+
+
+def domain_svg(domain: str, rows: list, metric: str,
+               n_ours: int, n_ref: int) -> str:
+    """The leaderboard chart of one domain, as a standalone figure.
+
+    `rows` is what `domain_chart` drew: dicts of name, sub and the same
+    `(class, tag, value, partial, gap_from)` series `bar_row` takes.
+    """
+    W, PAD, LABEL_W = 800, 18, 200
+    x_tag = PAD + LABEL_W + 24          # tags are right-aligned to here
+    x_track = x_tag + 8
+    x_dval = W - PAD                    # delta, right-aligned to the margin
+    x_val = x_dval - 60
+    track_w = x_val - 46 - x_track
+
+    body = [sv_text(PAD, 25, domain, "cond", 18, weight="700"),
+            sv_text(PAD, 42, f"{metric.replace('p', 'pass^')} · {n_ours} of "
+                    f"ours, {n_ref} published", "mut", 11)]
+    legend, leg_h = sv_legend(PAD, 53, W - 2 * PAD, [
+        ("en", "English", ""),
+        ("cs", "Czech (L2 interaction)", ""),
+        ("", "EN→CS gap", "url(#hatch)"),
+        ("ref", "published τ²-bench (English)", "")])
+    body.append(legend)
+
+    y = 53 + leg_h + 12
+    for i, r in enumerate(rows):
+        series = r["series"]
+        sub = r.get("subtxt") or ""
+        h = (len(series) * BAR_H + (len(series) - 1) * BAR_GAP + 2 * ROW_PAD)
+        mid = y + h / 2
+        if sub:
+            body.append(sv_text(PAD, mid - 1, sv_clip(r["name"], 32), size=12.5))
+            body.append(sv_text(PAD, mid + 11, sv_clip(sub, 34), "mut", 10.5))
+        else:
+            body.append(sv_text(PAD, mid + 4.5, sv_clip(r["name"], 32), size=12.5))
+
+        for j, (cls, tag, val, partial, gap_from) in enumerate(series):
+            by = y + ROW_PAD + j * (BAR_H + BAR_GAP)
+            g = ["<g opacity='.45'>"] if partial else ["<g>"]
+            if tag:
+                body.append(sv_text(x_tag, by + 11, tag, "mut cond", 10.5, "end"))
+            g.append(sv_rect(x_track, by, track_w, BAR_H, "tk"))
+            if val is None:
+                g.append("</g>")
+                body.append("".join(g))
+                body.append(sv_text(x_val, by + 11, "–", "mono mut", 10.5,
+                                    "end"))
+                continue
+            frac = max(0.0, min(1.0, val))
+            g.append(sv_rect(x_track, by, track_w * frac, BAR_H, cls, rx=3))
+            if gap_from is not None:
+                lo, hi = sorted((val, gap_from))
+                gx, gw = x_track + track_w * lo, track_w * (hi - lo)
+                g.append(sv_rect(gx, by, gw, BAR_H, rx=0, fill="url(#hatch)"))
+                g.append(f"<line class='gp' x1='{gx + gw:.1f}' y1='{by}' "
+                         f"x2='{gx + gw:.1f}' y2='{by + BAR_H}' "
+                         f"stroke-width='2'/>")
+            g.append("</g>")
+            body.append("".join(g))
+            body.append(sv_text(x_val, by + 11,
+                                f"{val:.3f}{' part' if partial else ''}",
+                                "mono", 10.5, "end"))
+            if gap_from is not None:
+                d = val - gap_from
+                body.append(sv_text(x_dval, by + 11, f"Δ {d:+.3f}",
+                                    "mono " + ("good" if d > 0 else "bad"),
+                                    10.5, "end"))
+        y += h
+        if i < len(rows) - 1:
+            body.append(f"<line class='sep' x1='{PAD}' y1='{y:.1f}' "
+                        f"x2='{W - PAD}' y2='{y:.1f}'/>")
+    return svg_doc(f"{domain} · {metric.replace('p', 'pass^')}",
+                   W, y + PAD, "".join(body))
+
+
+def ann_svg(rows: list, top: float, total: dict) -> str:
+    """The language-quality chart: flagged spans per conversation, per model."""
+    W, PAD, LABEL_W = 760, 18, 190
+    x_track = PAD + LABEL_W + 14
+    x_val = W - PAD
+    track_w = x_val - 66 - x_track
+
+    body = [sv_text(PAD, 25, "spans per conversation", "cond", 18, weight="700"),
+            sv_text(PAD, 42, f"{total['maj'] + total['min']} flagged spans over "
+                    f"{total['n']} judged conversations", "mut", 11)]
+    legend, leg_h = sv_legend(PAD, 53, W - 2 * PAD,
+                              [("mj", "major", ""), ("mn", "minor", "")])
+    body.append(legend)
+
+    y = 53 + leg_h + 12
+    h = BAR_H + 2 * ROW_PAD
+    for i, r in enumerate(rows):
+        by = y + ROW_PAD
+        body.append(sv_text(PAD, by + 11,
+                            sv_clip(r["run"].replace("-think-on", ""), 28)))
+        body.append(sv_rect(x_track, by, track_w, BAR_H, "tk"))
+        maj_w = track_w * (r["maj_per"] / top)
+        body.append(sv_rect(x_track, by, maj_w, BAR_H, "mj", rx=3))
+        body.append(sv_rect(x_track + maj_w, by, track_w * (r["min_per"] / top),
+                            BAR_H, "mn", rx=3))
+        body.append(sv_text(x_val, by + 11,
+                            f"{r['maj_per'] + r['min_per']:.2f} /sim",
+                            "mono", 10.5, "end"))
+        y += h
+        if i < len(rows) - 1:
+            body.append(f"<line class='sep' x1='{PAD}' y1='{y:.1f}' "
+                        f"x2='{W - PAD}' y2='{y:.1f}'/>")
+    return svg_doc("Language quality · spans per conversation",
+                   W, y + PAD, "".join(body))
+
+
 def domain_chart(domain: str, grid: dict, ref: dict, metric: str) -> str:
     """One domain: our models as EN/CS pairs, then the published bars."""
     ours = sorted(
@@ -924,7 +1172,10 @@ def domain_chart(domain: str, grid: dict, ref: dict, metric: str) -> str:
     if not ours:
         return ""
 
-    rows = []
+    # Collected as data first, then rendered twice -- once as the page's HTML
+    # rows, once as the SVG the export button hands over -- so the two cannot
+    # disagree about what is in the chart.
+    data = []
     for run, langs in ours:
         k = int(metric[1])
         en_m = (langs.get("en") or (None, {}))[1]
@@ -946,7 +1197,7 @@ def domain_chart(domain: str, grid: dict, ref: dict, metric: str) -> str:
                 link = (f"<br><a class=org href='/cell?run={esc(run)}"
                         f"&cell={esc(langs[lang][0])}'>trajectories &rsaquo;</a>")
                 break
-        rows.append(bar_row(run, "", series, link))
+        data.append({"name": run, "sub": "", "series": series, "note": link})
 
     ref_rows = []
     for r in ref.get("core", []):
@@ -958,15 +1209,24 @@ def domain_chart(domain: str, grid: dict, ref: dict, metric: str) -> str:
         ref_rows.append((val, r))
     ref_rows.sort(key=lambda t: -t[0])
     for val, r in ref_rows:
-        sub = f"{r.get('org') or ''} &middot; reasoning {r.get('effort') or '?'}"
-        rows.append(bar_row(r["model"], sub,
-                            [("ref", "", val, False, None)]))
+        # Two spellings of the same subtitle: the page wants the entity, the
+        # SVG wants the character.
+        org, eff = r.get("org") or "", r.get("effort") or "?"
+        data.append({"name": r["model"],
+                     "sub": f"{esc(org)} &middot; reasoning {esc(eff)}",
+                     "subtxt": f"{org} · reasoning {eff}",
+                     "series": [("ref", "", val, False, None)], "note": ""})
 
+    rows = [bar_row(d["name"], d["sub"], d["series"], d["note"]) for d in data]
     n_ours, n_ref = len(ours), len(ref_rows)
+    dl = svg_download(
+        f"dom-{domain}-{metric}",
+        f"cztaubench-{domain}-{metric.replace('p', 'pass')}.svg",
+        domain_svg(domain, data, metric, n_ours, n_ref))
     return (
         f"<div class=hd><h2>{esc(domain)}</h2>"
         f"<span class=sub2>{metric.replace('p', 'pass^')} &middot; "
-        f"{n_ours} of ours, {n_ref} published</span></div>"
+        f"{n_ours} of ours, {n_ref} published</span>{dl}</div>"
         f"<div class=legend>"
         f"<span><i style='background:var(--agent)'></i>English</span>"
         f"<span><i style='background:var(--user)'></i>Czech (L2 interaction)</span>"
