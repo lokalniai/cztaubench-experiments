@@ -227,14 +227,20 @@ margin-right:.3rem;vertical-align:middle}
    set by the panel's padding. */
 .phd{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .6rem}
 .phd h2{margin:0}
-/* The SVG export button. Quiet by default -- it is a utility beside a heading,
-   not a call to action -- and pushed to the right so it does not sit between
-   the chart's title and its caption. */
-.dl{margin-left:auto;flex:none;font:600 .7rem/1.6 var(--cond);
-text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
-background:none;border:1px solid var(--line);border-radius:3px;
-padding:.05rem .4rem;cursor:pointer;white-space:nowrap}
-.dl:hover{color:var(--fg);border-color:var(--muted)}
+/* The SVG export button. A caption-weight control, not a chip: boxed and
+   uppercased it read as loud as the heading it sits beside, which is backwards
+   for a utility most readers will never press. Borderless, muted, in the same
+   line art as the theme toggle, and pushed to the right so it never comes
+   between the chart's title and its caption. */
+.dl{margin-left:auto;flex:none;display:inline-flex;align-items:center;
+gap:.28rem;font:500 .78rem/1 var(--sans);color:var(--muted);background:none;
+border:0;padding:.1rem 0;cursor:pointer;white-space:nowrap}
+.dl svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;
+stroke-linecap:round;stroke-linejoin:round}
+.dl:hover{color:var(--link)}
+.dl:hover span{text-decoration:underline}
+.dl:focus-visible{outline:2px solid var(--link);outline-offset:3px;
+border-radius:2px}
 .caveat{background:var(--card);border-left:3px solid var(--muted);
 padding:.55rem .8rem;border-radius:0 5px 5px 0;color:var(--muted);
 font-size:.83rem;margin:.5rem 0 1rem;text-wrap:pretty}
@@ -448,6 +454,10 @@ SUN = ("<svg class=sun viewBox='0 0 24 24' aria-hidden=true><circle cx=12 cy=12 
        "M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4' /></svg>")
 MOON = ("<svg class=moon viewBox='0 0 24 24' aria-hidden=true>"
         "<path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z' /></svg>")
+# Arrow into a tray, drawn on the same 24-grid and with the same line weight as
+# the pair above, so the two controls on a page look drawn by one hand.
+DOWNLOAD = ("<svg viewBox='0 0 24 24' aria-hidden=true>"
+            "<path d='M12 3.5v10.5M7.5 10l4.5 4.5 4.5-4.5M4.5 20h15' /></svg>")
 
 MAST = (
     "<header class=mast>"
@@ -1037,7 +1047,11 @@ def svg_download(key: str, filename: str, svg: str) -> str:
     payload = json.dumps(svg).replace("</", "<\\/")
     return (
         f"<button class=dl type=button data-svg='{esc(key)}' "
-        f"title='Download this chart as SVG'>SVG &darr;</button>"
+        # Label before icon, and not only because it reads that way: the button
+        # is a flex box baseline-aligned against the heading beside it, and a
+        # flex box takes its baseline from its first item -- an <svg>, which has
+        # none, would align the whole control by its bottom edge instead.
+        f"title='Download this chart as SVG'><span>SVG</span>{DOWNLOAD}</button>"
         f"<script>(function(){{var S=window.BMSVG=window.BMSVG||{{}};"
         f"S[{json.dumps(key)}]={{n:{json.dumps(filename)},s:{payload}}};"
         f"if(window.BMSVGH)return;window.BMSVGH=1;"

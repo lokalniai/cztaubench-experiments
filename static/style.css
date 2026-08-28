@@ -189,14 +189,20 @@ margin-right:.3rem;vertical-align:middle}
    set by the panel's padding. */
 .phd{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .6rem}
 .phd h2{margin:0}
-/* The SVG export button. Quiet by default -- it is a utility beside a heading,
-   not a call to action -- and pushed to the right so it does not sit between
-   the chart's title and its caption. */
-.dl{margin-left:auto;flex:none;font:600 .7rem/1.6 var(--cond);
-text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
-background:none;border:1px solid var(--line);border-radius:3px;
-padding:.05rem .4rem;cursor:pointer;white-space:nowrap}
-.dl:hover{color:var(--fg);border-color:var(--muted)}
+/* The SVG export button. A caption-weight control, not a chip: boxed and
+   uppercased it read as loud as the heading it sits beside, which is backwards
+   for a utility most readers will never press. Borderless, muted, in the same
+   line art as the theme toggle, and pushed to the right so it never comes
+   between the chart's title and its caption. */
+.dl{margin-left:auto;flex:none;display:inline-flex;align-items:center;
+gap:.28rem;font:500 .78rem/1 var(--sans);color:var(--muted);background:none;
+border:0;padding:.1rem 0;cursor:pointer;white-space:nowrap}
+.dl svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;
+stroke-linecap:round;stroke-linejoin:round}
+.dl:hover{color:var(--link)}
+.dl:hover span{text-decoration:underline}
+.dl:focus-visible{outline:2px solid var(--link);outline-offset:3px;
+border-radius:2px}
 .caveat{background:var(--card);border-left:3px solid var(--muted);
 padding:.55rem .8rem;border-radius:0 5px 5px 0;color:var(--muted);
 font-size:.83rem;margin:.5rem 0 1rem;text-wrap:pretty}
