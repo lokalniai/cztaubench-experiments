@@ -468,7 +468,7 @@ MAST = (
     "width=102 height=32></a>"
     "<span class=mastsep>&frasl;</span>"
     "<a class=proj href='https://lokalni.ai/blog/umi-agenti-cesky-3/'>"
-    "Um&iacute; agenti &#269;esky? &#268;&aacute;st 3: Konverzace s u&#382;ivatelem"
+    "Um&iacute; agenti &#269;esky? &#268;&aacute;st 3: Z&aacute;kaznick&aacute; podpora"
     "</a>"
     "<span class=spacer></span>"
     f"<button class=tgl type=button data-theme-toggle "
