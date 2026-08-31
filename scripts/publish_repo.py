@@ -21,7 +21,8 @@ not the one currently in use.
 
 **It excludes what has its own home.** The SEATauBench checkout is upstream code
 under its own licence and is not vendored; `logs/`, `discarded/` and the venv are
-noise for a reader. What is reproducible from a clone plus `README.md` stays out.
+noise for a reader. `docs/DEPLOYMENT.md` -- the protocol and this layout -- stays
+local by choice, so it is not copied out either.
 """
 
 from __future__ import annotations
@@ -57,41 +58,15 @@ SCRIPTS = [
     "probe_thinking.py",
 ]
 
-REPO_HEADER = """
-> **This repository is the published record of the CzTauBench run.** The
-> browsable results are at
-> <https://lokalniai.github.io/cztaubench-experiments/> — leaderboard, every
-> trajectory, and the Czech language-quality annotations. The document below is
-> the protocol: what was run, how, and every decision that shapes the numbers.
->
-> | | |
-> |---|---|
-> | `index.html`, `sim/`, `compare/`, `annotations.html` | the static site, built by `scripts/build_site.py` |
-> | `results/simulations/<run>/<cell>/results.json` | raw tau2 output — every score on the site reduces from these |
-> | `results/language_annotations.json` | the Czech judge's flagged spans |
-> | `scripts/` | the pipeline that produced all of it |
->
-> **Not included, and why.** `SEATauBench/` is an upstream checkout under its own
-> MIT licence — clone it and apply the six changes in §4 to reproduce. `logs/`
-> and `discarded/` are noise. Two changes are made to the raw results and no
-> others, both recorded inside each file at `info.published`: `api_key` fields
-> are redacted, and the per-message provider response envelopes are dropped —
-> they duplicate the message's own `content` and weigh more than the rest of the
-> data put together. The user simulator's reasoning traces, the one thing inside
-> those envelopes that exists nowhere else, are kept. Rewards, transcripts,
-> token counts and timings are untouched, so `scripts/report.py` reproduces
-> every number in §9 from this copy. See `DEPLOYMENT.md`.
->
-> Task data, policies and databases are derived from
-> [τ²-bench](https://github.com/sierra-research/tau2-bench) and
-> [SEATauBench](https://github.com/SEACrowd/SEATauBench), both MIT licensed.
-"""
-
+# DEPLOYMENT.md is ignored rather than merely not copied: it used to be published
+# here, and an ignore entry is what stops a stale copy from being re-added by a
+# `git add -A` in the checkout.
 GITIGNORE = """\
 __pycache__/
 *.pyc
 .env
 .DS_Store
+/DEPLOYMENT.md
 """
 
 
@@ -148,8 +123,8 @@ def slim(doc: dict, mode: str) -> dict:
     `raw_data.reasoning_content` while the data carries
     `raw_data.choices[].message.reasoning_content`, so the thinking panel has
     never rendered against these runs -- but it is the only record of how the
-    simulated customer decided what to say, which README §7 names as a threat to
-    validity. `reasoning` keeps exactly that and drops the rest.
+    simulated customer decided what to say, which docs/DEPLOYMENT.md §7 names as
+    a threat to validity. `reasoning` keeps exactly that and drops the rest.
     """
     if mode == "full":
         return doc
@@ -252,15 +227,11 @@ def main() -> None:
         if src.exists():
             shutil.copy2(src, sdir / name)
 
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    title, rest = readme.split("\n", 1)
-    (out / "README.md").write_text(f"{title}\n{REPO_HEADER}\n{rest}",
-                                   encoding="utf-8")
-    # docs/DEPLOYMENT.md, not the DEPLOYMENT.md in the working root -- that one
-    # is the BenchMAX round's, kept here as the reference this layout follows.
-    src = ROOT / "docs" / "DEPLOYMENT.md"
-    if src.exists():
-        shutil.copy2(src, out / "DEPLOYMENT.md")
+    # The README is copied verbatim: it is the front page of the published
+    # repository and nothing else, so there is no header to splice in. The
+    # protocol it used to carry now lives in docs/DEPLOYMENT.md, which stays
+    # local -- it is not copied here and is ignored in the checkout.
+    shutil.copy2(ROOT / "README.md", out / "README.md")
 
     # Pages runs Jekyll by default; with 5,764 pages there is nothing for it to
     # do and a build step that can only fail or time out.

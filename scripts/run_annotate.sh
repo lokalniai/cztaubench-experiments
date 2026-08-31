@@ -7,7 +7,7 @@
 #SBATCH -o /lnet/work/people/kasner/projects/cztaubench/logs/annotate_%j.out
 #SBATCH -e /lnet/work/people/kasner/projects/cztaubench/logs/annotate_%j.out
 #
-# Czech language-quality annotation over finished runs (README §6.2).
+# Czech language-quality annotation over finished runs (docs/DEPLOYMENT.md §6.2).
 #
 # Like run_cell.sh this is a pure API client — every token is generated on the
 # e-infra endpoint — so it belongs on a CPU partition. It is slow for a reason

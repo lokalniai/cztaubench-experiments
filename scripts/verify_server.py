@@ -8,7 +8,7 @@ never emits a tool call. Every tau2 task is driven through function calls, so
 the run then scores near zero and reads as model incompetence rather than as a
 misconfigured server. By the time that is visible, days of GPU are gone.
 
-Four checks, matching the list in README §3 "vLLM serving":
+Four checks, matching the list in docs/DEPLOYMENT.md §3 "vLLM serving":
 
   1. tools    -- a tools request comes back with tool_calls, not prose
   2. no-args  -- a zero-argument tool yields arguments "{}" and not ""
